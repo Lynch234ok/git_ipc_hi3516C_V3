@@ -1,0 +1,42 @@
+#!/bin/sh
+
+ipaddr=192.168.2.32
+netmask=255.255.255.0
+gateway=192.168.1.1
+
+
+
+
+
+
+PATH="/usr/bin:/usr/sbin:/bin:/sbin:/bin_s:/isp_tools"
+#set_path_before /usr/local/sbin
+#set_path_before /usr/local/bin
+
+LD_LIBRARY_PATH="/usr/local/lib:/usr/lib"
+
+export PATH
+export LD_LIBRARY_PATH
+
+#network
+
+
+ifconfig eth0 hw ether 00:10:85:18:01:65
+ifconfig eth0 ${ipaddr} netmask ${netmask}
+route add default gw ${gateway}
+ifconfig lo 127.0.0.1
+
+
+
+
+
+
+
+
+
+
+
+#telnet
+#telnetd& 
+#/etc/boottab ipcamera&
+

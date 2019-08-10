@@ -1,0 +1,59 @@
+{
+	"Version" : "1.0.7",
+	"FixMode": "none",
+	"FixModeProperty": { "type" : "string", "mode" : "rw", "opt" : [ "wall", "cell", "table", "none"] },
+	"ModelName" : "C3-S-NE",
+	"ModelNameProperty"  : { "type" : "string", "mode" : "ro"},
+	"SN" :{
+		"ChipModel" : "3516E100",
+		"ChipModelProperty"  : { "type" : "string", "mode" : "ro"},
+		"ProductModel" : "20000300",
+		"ProductModelProperty"  : { "type" : "string", "mode" : "ro"}
+	},
+	"Audio" :{
+		"AudioInputVolume" : 50,
+		"AudioInputVolumeProperty"  : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 100, "def" : 50},
+		"AudioOutputVolume" : 50,
+		"AudioOutputVolumeProperty"  : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 100, "def" : 50}
+	},
+	"Video" :{
+		"videoChannel" : [
+			{
+				"id":1,
+				"idProperty"  : { "type" : "int", "mode" : "ro"},
+				"bitRateControlType" : "VBR",
+				"bitRateControlTypeProperty" : { "type" : "string", "mode" : "rw", "opt" : ["CBR", "VBR"] },
+				"Bps" : 1024,
+				"BpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 32, "max" : 5000 },	
+				"Fps" : 15,
+				"FpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 5, "max" : 15 },		
+				"Resolution" : "1920x1080",
+				"ResolutionProperty" : { "type" : "string", "mode" : "rw", "opt" : ["1920x1080"]}
+			},
+			{
+				"id":2,
+				"idProperty"  : { "type" : "int", "mode" : "ro"},
+				"bitRateControlType" : "VBR",
+				"bitRateControlTypeProperty" : { "type" : "string", "mode" : "rw", "opt" : ["CBR", "VBR"] },
+				"Bps" : 256,
+				"BpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 32, "max" : 5000 },	
+				"Fps" : 15,
+				"FpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 5, "max" : 15 },		
+				"Resolution" : "640x360",
+				"ResolutionProperty" : { "type" : "string", "mode" : "rw", "opt" : ["640x360"] }
+			}
+		]
+	},
+	"OSD":{
+		"osdStreamNum":2,
+		"osdStreamNumProperty" : { "type" : "integer", "mode" : "rw", "min" : 1, "max" : 5 },
+		"osdTimeX":5,
+		"osdTimeXProperty" : { "type" : "integer", "mode" : "rw", "min" : 0, "max" : 100 },
+		"osdTimeY":0,
+		"osdTimeYProperty" : { "type" : "integer", "mode" : "rw", "min" : 0, "max" : 100 }
+	},
+	"irCutControlMode": "hardware",
+	"irCutControlModeProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "hardware", "software"] }
+}
+
+	

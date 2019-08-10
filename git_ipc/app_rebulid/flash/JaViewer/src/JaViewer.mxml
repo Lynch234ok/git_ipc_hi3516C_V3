@@ -1,0 +1,340 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   xmlns:mx="library://ns.adobe.com/flex/mx"
+			   width="100%" height="100%" backgroundColor="#000000" 
+			   creationComplete="application1_creationCompleteHandler(event)"
+			   resize="application1_resizeHandler(event)" 
+			   doubleClickEnabled="true" 
+			   doubleClick="application1_doubleClickHandler(event)" click="application1_clickHandler(event)" xmlns:local="*" >
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.events.FlexEvent;
+			import mx.events.ResizeEvent;
+			
+			private var player_num:uint = 4;
+			private var player_max:uint = 4;
+			private var player_created:Boolean = false;
+			
+			private var focus_ch:int = 0;
+			
+			public function GetFocus():int
+			{
+				return focus_ch;
+			}
+			
+			private function SetFocus(focus:int):void
+			{
+				if(focus != this.focus_ch && focus < player_num){
+					// 切换焦点
+					var old_focus:JaPlayer = JaPlayer(this.getElementAt(this.focus_ch));
+					old_focus.setStyle("borderColor", "#00ff00");
+					old_focus.SetMute(true);
+					old_focus = null;
+					trace("Set focus from " + this.focus_ch + " to " + focus);
+					this.focus_ch = focus;
+					var new_focus:JaPlayer = JaPlayer(this.getElementAt(this.focus_ch));
+					new_focus.setStyle("borderColor", "#ff0000");
+					new_focus.SetMute(false);
+					new_focus = null;
+				}
+			}
+			
+			protected function application1_creationCompleteHandler(event:FlexEvent):void
+			{
+				// TODO Auto-generated method stub	
+				// 公开接口
+				flash.system.Security.allowDomain('*');
+				flash.system.Security.allowInsecureDomain('*');
+				if (ExternalInterface.available) {
+					try {
+						ExternalInterface.addCallback('ConnectRTMP', this.ConnectRTMP);
+						ExternalInterface.addCallback('ConnectFLV', this.ConnectFLV);
+						ExternalInterface.addCallback('Disconnect', this.Disconnect);
+						ExternalInterface.addCallback('SetPoster', this.SetPoster);
+						//////////////////////////////////////////////////////////////////////////
+						ExternalInterface.addCallback('ZoomIn', this.ZoomIn);
+						ExternalInterface.addCallback('ZoomOut', this.ZoomOut);
+						//////////////////////////////////////////////////////////////////////////
+						ExternalInterface.addCallback('SetFocus', this.SetFocus);
+						ExternalInterface.addCallback('GetFocus', this.GetFocus);
+						//////////////////////////////////////////////////////////////////////////
+						ExternalInterface.addCallback('SetView', this.SetView);
+						ExternalInterface.addCallback('SetViewDiv', this.SetViewDiv);
+						//////////////////////////////////////////////////////////////////////////
+						ExternalInterface.addCallback('StretchVideo', this.StretchVideo);
+						ExternalInterface.addCallback('SetPlayerNum', this.SetPlayerNum);
+						//////////////////////////////////////////////////////////////////////////
+						ExternalInterface.addCallback('SetAudio',this.SetAudio);
+						ExternalInterface.addCallback('SetBufferTime',this.SetBufferTime);				
+						
+					} 
+					catch (error:SecurityError) {
+						trace("A SecurityError occurred: " + error.message);
+					}
+					catch (error:Error) {
+						trace("An Error occurred: " + error.message);
+					}
+				}
+				
+				// 测试连接
+				//connectAll();
+			}
+			
+			public function SetPlayerNum(num:int):void
+			{
+				if(player_created){
+					this.removeAllElements();
+					
+				}
+				
+				var player_sequare:uint = 1;
+				while(player_sequare < 8){
+					if(num <= Math.pow(player_sequare, 2)){
+						break;
+					}
+					++player_sequare;
+				}
+				player_num = num;
+				player_max = Math.pow(player_sequare, 2);
+				
+				trace("Player entries " + player_num + "/" + player_max);
+				
+				// 创建播放器
+				for(var i:int = 0; i < player_num; ++i){
+					var player_id:String = "player" + i.toString();
+					var new_player:JaPlayer = new JaPlayer;
+					new_player.id = player_id;
+					
+					this.addElementAt(new_player, i);
+					trace("Creating " + player_id);
+					
+					if(i == focus_ch){
+						new_player.setStyle("borderColor", "#ff0000");
+						new_player.SetMute(false);
+					}else{
+						new_player.setStyle("borderColor", "#00ff00");
+						new_player.SetMute(true);
+					}
+				}
+				player_created = true;
+				SetView(0, 0);
+			}
+			
+			public function ConnectRTMP(ch:int, url:String, stream_name:String):void
+			{
+				var player_object:Object = this.getElementAt(ch);
+				trace("connect to "+url+stream_name);
+				if(player_object){
+					JaPlayer(player_object).ConnectRTMP(url, stream_name);
+				}
+			}
+			
+			public function ConnectFLV(ch:int, url:String):void
+			{
+				var player_object:Object = this.getElementAt(ch);
+				if(player_object){
+					JaPlayer(player_object).ConnectFLV(url);
+				}
+			}
+			
+			public function Disconnect(ch:int):void
+			{
+				var player_object:Object = this.getElementAt(ch);
+				if(player_object){
+					JaPlayer(player_object).Disconnect();
+				}
+			}
+			
+			public function SetPoster(ch:int, url:String):void
+			{
+				var player_object:Object = this.getElementAt(ch);
+				if(player_object){
+					JaPlayer(player_object).poster_url = url;
+				}
+			}
+			
+			public function StretchVideo(ch:int, strech:Boolean):void
+			{
+				var player_object:Object = this.getElementAt(ch);
+				if(player_object){
+					JaPlayer(player_object).StretchVideo(strech);
+				}
+			}
+			
+			public function ZoomIn(ch:int):void
+			{
+				if(ch < player_num){
+					SetView(1, ch);
+				}
+			}
+			
+			public function ZoomOut():void
+			{
+				SetViewDiv(player_max);
+			}
+			
+			public function SetAudio(ch:int,enable:Boolean):void
+			{
+				var player_object:Object = this.getElementAt(ch);
+				if(player_object){
+					JaPlayer(player_object).SetAudio(enable);
+				}
+			}
+			public function SetBufferTime(t:int):void
+			{
+				var i:int;
+				var player_object:Object =null;
+				for (i = 0;i<player_num;i++){
+					player_object = this.getElementAt(i);
+					if(player_object){
+						JaPlayer(player_object).SetBufferTime(t);
+					}
+				}
+			}
+			private var view_div:int = 0;
+			private var view_page:int = 0;
+			private var view_div_b:int = -1;
+			private var view_page_b:int = -1;
+			
+			protected function SetView(div:int, page:int):void
+			{
+				if(player_created){
+					var grid:int;
+					var chwidth:int;
+					var chheight:int;
+					
+					if(0 == div){
+						view_div = player_max;
+						view_page = 0;
+						div = view_div;
+						page = view_page;
+					}
+					
+					if(div > this.player_max){
+						return SetView(this.player_max, 0);	
+					}
+					
+					// 判断page的合法性
+					if(!(page * div < this.player_max)){
+						return;
+					}
+					
+					grid = Math.sqrt(div);
+					chwidth = this.width / grid;
+					chheight = this.height / grid;
+					// 视频通道的显示范围
+					const view_from:int = div * page;
+					const view_to:int = div * (page + 1);
+					
+					for(var i:int = 0; i < player_num; ++i){
+						var player_item:JaPlayer = JaPlayer(this.getElementAt(i));
+						if(i >= view_from && i < view_to){
+							// 目标内的视频显示
+							player_item.visible = true;
+						}else{
+							// 目标外的视频隐藏
+							player_item.visible = false;
+						}
+						var x:int = (i % grid)* chwidth;
+						var y:int = int((i / grid) % grid)* chheight;			
+						player_item.width = chwidth;
+						player_item.height = chheight;
+						player_item.x = x;
+						player_item.y = y;
+					}
+					// 备份上次分割状态
+					this.view_div_b = this.view_div;
+					this.view_page_b = this.view_page;
+					// 更新当前显示
+					this.view_div = div;
+					this.view_page = page;
+					// 更新焦点位置
+//					if(!(focus_ch >= view_from && focus_ch < view_to)){
+//						SetFocus(view_from);
+//					}
+				}
+			}
+			
+			public function SetViewDiv(div:uint):void
+			{
+				if(div <= player_max){
+					if(1 == div || 4 == div || 9 == div || 16 == div || 25 == div){
+						const view_page_max:int = (player_max + div - 1) / div;
+						if(div != view_div){
+							return SetView(div, 0); // 切换到第窗口
+						}
+						return SetView(div, (view_page + 1) % view_page_max);
+					}
+				}
+			}
+			
+			private function connectAll():void
+			{
+				SetPlayerNum(1);
+				for(var i:int = 0; i < player_max; ++i){
+					SetPoster(i, "http://192.168.2.85:1935/snapshot" + "?vin=" + int(i + 1).toString() + "&size=320x240");
+					ConnectRTMP(i, "rtmp://192.168.2.85:1935/","720p.264");
+				}
+				
+//				for(var i:int = 0; i < player_max; ++i){
+//					SetPoster(i, "http://192.168.2.45:80/snapshot" + "?vin=" + int(i + 1).toString() + "&size=320x240");
+//					Disconnect(i);
+//				}
+			}
+			
+			protected function application1_resizeHandler(event:ResizeEvent):void
+			{
+				SetView(0, 0);
+			}
+			
+			protected function application1_doubleClickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				if(1 == view_div){
+					SetViewDiv(player_max);
+				}else{
+					for(var i:int = 0; i < player_num; ++i){
+						var player_object:JaPlayer = JaPlayer(this.getElementAt(i));
+						if(event.stageX >= player_object.x && event.stageX < player_object.x + player_object.width
+							&& event.stageY >= player_object.y && event.stageY < player_object.y + player_object.height){
+							trace("double click @ (" + event.localX + "," + event.localY + ") in " + i);
+							SetView(1, i);
+							break;
+						}
+					}
+				}
+			}
+			
+			protected function application1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				var view_from:int = view_div * view_page;
+				var view_to:int = view_div * (view_page + 1);
+				
+				for(var i:int = view_from; i < view_to && i < player_num; ++i){
+					var player_object:JaPlayer = JaPlayer(this.getElementAt(i));
+					if(event.stageX >= player_object.x && event.stageX <= player_object.x + player_object.width
+						&& event.stageY >= player_object.y && event.stageY <= player_object.y + player_object.height){
+						SetFocus(i);
+						break;
+					}
+				}
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<!-->
+	<s:Button x="0" y="0" label="1" click="SetViewDiv(1)"/>
+	<s:Button x="0" y="29" label="4" click="SetViewDiv(4)"/>
+	<s:Button x="0" y="58" label="9" click="SetViewDiv(9)"/>
+	<s:Button x="78" y="0" label="16" click="SetViewDiv(16)"/>
+	<s:Button x="78" y="28" label="25" click="SetViewDiv(25)"/>
+	<s:Button x="78" y="58" label="36" click="SetViewDiv(36)"/>
+	-->
+	<!--<local:JaPlayer id="player" width="100%" height="100%"/>-->
+</s:Application>

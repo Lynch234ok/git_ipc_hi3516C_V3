@@ -1,0 +1,692 @@
+#ifndef _HI_3518E_VI_INFO_H
+#define _HI_3518E_VI_INFO_H
+
+#define SET_VI_DEV_ATTR_AR0130(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xfff0000;\
+			info.au32CompMask[1] = 0x0000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_VALID_SINGAL;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1280;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 960;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1280;\
+            info.stDevRect.u32Height = 960;\
+}
+
+#define SET_VI_DEV_ATTR_IMX122(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFF0000;\
+			info.au32CompMask[1] = 0x0000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_VALID_SINGAL;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1920;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 1080;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 200;\
+            info.stDevRect.s32Y = 20;\
+            info.stDevRect.u32Width  = 1920;\
+            info.stDevRect.u32Height = 1080;\
+}
+
+#define SET_VI_DEV_ATTR_SC2035(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFF0000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_NORM_PULSE;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1920;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 1080;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1920;\
+            info.stDevRect.u32Height = 1080;\
+}
+
+#define SET_VI_DEV_ATTR_AR0237(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFF0000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_VALID_SINGAL;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1920;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 1080;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1920;\
+            info.stDevRect.u32Height = 1080;\
+}
+#define SET_VI_DEV_ATTR_SC2045(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFC0000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_NORM_PULSE;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1920;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 1080;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1920;\
+            info.stDevRect.u32Height = 1080;\
+}
+
+#define SET_VI_DEV_ATTR_SC1035(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFF0000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_NORM_PULSE;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1280;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 960;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1280;\
+            info.stDevRect.u32Height = 960;\
+}
+
+#define SET_VI_DEV_ATTR_SC1045(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFC0000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_NORM_PULSE;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1280;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 720;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1280;\
+            info.stDevRect.u32Height = 720;\
+}
+
+#define SET_VI_DEV_ATTR_SC1135(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFF0000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_NORM_PULSE;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1280;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 960;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1280;\
+            info.stDevRect.u32Height = 960;\
+}
+
+#define SET_VI_DEV_ATTR_SC1145(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFC0000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_NORM_PULSE;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1280;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 720;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1280;\
+            info.stDevRect.u32Height = 720;\
+}
+
+#define SET_VI_DEV_ATTR_SC3035(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFF0000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_NORM_PULSE;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1536;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 1536;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1536;\
+            info.stDevRect.u32Height = 1536;\
+}
+
+#define SET_VI_DEV_ATTR_SC2135(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFF0000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_NORM_PULSE;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1920;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 1080;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1920;\
+            info.stDevRect.u32Height = 1080;\
+}
+
+#define SET_VI_DEV_ATTR_IMX225(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xfff0000;\
+			info.au32CompMask[1] = 0x0000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_VALID_SINGAL;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1280;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 960;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X =4;\
+            info.stDevRect.s32Y = 18;\
+            info.stDevRect.u32Width  = 1280;\
+            info.stDevRect.u32Height = 960;\
+}
+
+#define SET_VI_DEV_ATTR_IMX291(info) \
+{\
+			info.enIntfMode = VI_MODE_LVDS;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFF00000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_VALID_SINGAL;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1920;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 1080;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 30;\
+            info.stDevRect.u32Width  = 1920;\
+            info.stDevRect.u32Height = 1080;\
+}
+
+#define SET_VI_DEV_ATTR_PS5270(info) \
+{\
+			info.enIntfMode = VI_MODE_MIPI;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFFF0000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_NORM_PULSE;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1536;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 1536;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+			info.stDevRect.s32Y = 0;\
+			info.stDevRect.u32Width  = 1536;\
+			info.stDevRect.u32Height = 1536;\
+}
+
+#define SET_VI_DEV_ATTR_PS5230(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFC0000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_FIELD;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_VALID_SINGAL;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1920;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 1080;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1920;\
+            info.stDevRect.u32Height = 1080;\
+}
+
+
+#define SET_VI_DEV_ATTR_AR0230(info) \
+{\
+			info.enIntfMode = VI_MODE_HISPI;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFF00000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_VALID_SINGAL;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1920;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 1080;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1920;\
+            info.stDevRect.u32Height = 1080;\
+}
+
+
+
+#define SET_VI_DEV_ATTR_SC1235(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFF0000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_NORM_PULSE;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1280;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 960;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1280;\
+            info.stDevRect.u32Height = 960;\
+}
+
+
+#define SET_VI_DEV_ATTR_SC2235(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFF0000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_NORM_PULSE;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1920;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 1080;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1920;\
+            info.stDevRect.u32Height = 1080;\
+}
+
+
+#define SET_VI_DEV_ATTR_SC2232(info) \
+{\
+			info.enIntfMode = VI_MODE_DIGITAL_CAMERA;\
+			info.enWorkMode = VI_WORK_MODE_1Multiplex;\
+			info.au32CompMask[0] = 0xFFF0000;\
+			info.au32CompMask[1] = 0x00000000;\
+			info.enScanMode = VI_SCAN_PROGRESSIVE;\
+			info.s32AdChnId[0] = -1;\
+			info.s32AdChnId[1] = -1;\
+			info.s32AdChnId[2] = -1;\
+			info.s32AdChnId[3] = -1;\
+			info.enDataSeq = VI_INPUT_DATA_YUYV;\
+			info.stSynCfg.enVsync = VI_VSYNC_PULSE;\
+			info.stSynCfg.enVsyncNeg = VI_VSYNC_NEG_HIGH;\
+			info.stSynCfg.enHsync = VI_HSYNC_VALID_SINGNAL;\
+			info.stSynCfg.enHsyncNeg = VI_HSYNC_NEG_HIGH;\
+			info.stSynCfg.enVsyncValid = VI_VSYNC_NORM_PULSE;\
+			info.stSynCfg.enVsyncValidNeg = VI_VSYNC_VALID_NEG_HIGH;\
+			info.stSynCfg.stTimingBlank.u32HsyncHfb = 0;\
+			info.stSynCfg.stTimingBlank.u32HsyncAct = 1920;\
+			info.stSynCfg.stTimingBlank.u32HsyncHbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVact = 1080;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbfb = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbact = 0;\
+			info.stSynCfg.stTimingBlank.u32VsyncVbbb = 0;\
+			info.enDataPath = VI_PATH_ISP;\
+			info.enInputDataType = VI_DATA_TYPE_RGB;\
+			info.bDataRev = HI_FALSE;\
+			info.stDevRect.s32X = 0;\
+            info.stDevRect.s32Y = 0;\
+            info.stDevRect.u32Width  = 1920;\
+            info.stDevRect.u32Height = 1080;\
+}
+
+#endif

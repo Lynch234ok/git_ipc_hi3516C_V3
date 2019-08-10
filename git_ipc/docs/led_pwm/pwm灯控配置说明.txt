@@ -1,0 +1,31 @@
+1.默认配置文件
+custom_led_pwm.json.aidie用于爱蝶默认配置，支持亮度、色温两路控制
+custom_led_pwm.json.standard用于标准默认配置，只支持一路亮度控制
+
+2.json配置说明
+{
+	"product" : "standard",
+	"productProperty" : { "type" : "string", "mode" : "ro", "opt" : ["aiDie", "standard"] }, /* 爱蝶/标准灯泡 */
+	"channelCount" : 2,
+	"channelCountProperty" : { "type" : "integer", "mode" : "ro", "opt" : [0, 1, 2, 3] },
+	"switch" : 1,
+	"switchProperty" : { "type" : "integer", "mode" : "rw", "opt" : [0, 1] },
+	"channelInfo" : [
+		{
+			"type" : 1,
+			"typeProperty" : { "type" : "integer", "mode" : "ro", "opt" : [1, 2, 3] },/* 亮度/色温/RGB */
+			"num" : 100,
+			"numProperty" : { "type" : "integer", "mode" : "rw", "min" : 0, "max" : 255 },
+			"channel" : 1,
+			"channelProperty" : { "type" : "integer", "mode" : "ro", "opt" : [1, 2, 3] } /* PWM1/2/3 */
+		},
+		{
+			"type" : 2,
+			"typeProperty" : { "type" : "integer", "mode" : "ro", "opt" : [1, 2, 3] },
+			"num" : 50,
+			"numProperty" : { "type" : "integer", "mode" : "rw", "min" : 0, "max" : 255 },
+			"channel" : 3
+			"channelProperty" : { "type" : "integer", "mode" : "ro", "opt" : [1, 2, 3] }
+		}
+	]
+}

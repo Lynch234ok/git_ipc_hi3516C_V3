@@ -1,0 +1,17 @@
+{
+	"product" : "aiDie",
+	"channelCount" : 2,
+	"switch" : 1,
+	"channelInfo" : [
+		{
+			"type" : 1,
+			"num" : 100,
+			"channel" : 1
+		},
+		{
+			"type" : 2,
+			"num" : 50,
+			"channel" : 3
+		}
+	]
+}

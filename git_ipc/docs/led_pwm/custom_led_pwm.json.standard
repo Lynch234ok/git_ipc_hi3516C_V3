@@ -1,0 +1,12 @@
+{
+	"product" : "standard",
+	"channelCount" : 1,
+	"switch" : 1,
+	"channelInfo" : [
+		{
+			"type" : 1,
+			"num" : 100,
+			"channel" : 1
+		}
+	]
+}

@@ -1,0 +1,44 @@
+#!/bin/sh
+
+#PPP_PATH="/tmp/ppp/"
+PPP_PATH="/usr/share/ipcam/shell/ppp/"
+
+
+# exit number: 0, sucess; -2, carrier is not supported; -1, other error
+
+if [ "$1" = "" ]; then
+	echo "Carrier is not specified!"
+	exit -1
+elif [ "$1" = "mo" ]; then
+	ISP_SET="dial-set-mo"
+elif [ "$1" = "un" ]; then
+	ISP_SET="dial-set-un"
+elif [ "$1" = "te" ]; then
+	ISP_SET="dial-set-te"
+else
+	echo "Carrier ""$1"" is not supported!"
+	exit -2
+fi
+
+if [ "$2" = "" ]; then
+	echo "ttyname is not specified!"
+	exit -1
+fi
+
+
+if [ ! -f $PPP_PATH$ISP_SET ]
+then
+exit -1
+fi
+
+. $PPP_PATH$ISP_SET
+
+. $PPP_PATH"dial-bgn"
+
+if [ ! -f $PPP_PATH"dial-opt" ]
+then
+exit -1
+fi 
+
+rm -f /tmp/pppd.log
+exec pppd $2 file $PPP_PATH"dial-opt" &

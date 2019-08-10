@@ -1,0 +1,111 @@
+{
+	"version" : "1.0.2",
+	
+	"streamChannel" : [
+		{
+			"id" : 101,
+			"idProperty" : { "type" : "integer", "mode" : "ro" },
+			"AudioEncodeChannelID" : 101,
+			"AudioEncodeChannelIDProperty" : { "type" : "integer", "mode" : "ro" },
+			"videoEncodeChannelID" : 101,
+			"videoEncodeChannelIDProperty" : { "type" : "integer", "mode" : "ro" },
+
+			"transportRTSP" : {
+				"enabled" : true,
+				"authorization" : false,
+				"absolutePath" : "/ch0_0.264",
+				"port" : 80,
+			},
+			"transportRTSPoverHTTP" : {
+				"enabled" : false,
+				"authorization" : false,
+				"requestMethod" : "GET",
+				"absolutePath" : "/RTSP/ch0_0.264",
+				"port" : 80,
+			},
+			"transportFLVoverHTTP" : {
+				"enabled" : true,
+				"authorization" : false,
+				"requestMethod" : "GET",
+				"absolutePath" : "/cgi-bin/view.cgi?vin=0&stream=0",
+				"port" : 80,
+			},
+			"transportRTMP" : {
+				"enabled" : true,
+				"authorization" : false,
+				"absolutePath" : "/ch0_0.264",
+				"port" : 80,
+			},
+		},
+		{
+			"id" : 102,
+			"idProperty" : { "type" : "integer", "mode" : "ro" },
+			"AudioEncodeChannelID" : 102,
+			"AudioEncodeChannelIDProperty" : { "type" : "integer", "mode" : "ro" },
+			"videoEncodeChannelID" : 102,
+			"videoEncodeChannelIDProperty" : { "type" : "integer", "mode" : "ro" },
+
+			"transportRTSP" : {
+				"enabled" : true,
+				"authorization" : false,
+				"absolutePath" : "/ch0_1.264",
+				"port" : 80,
+			},
+			"transportRTSPoverHTTP" : {
+				"enabled" : false,
+				"authorization" : false,
+				"requestMethod" : "GET",
+				"absolutePath" : "/RTSP/ch0_1.264",
+				"port" : 80,
+			},
+			"transportFLVoverHTTP" : {
+				"enabled" : true,
+				"authorization" : false,
+				"requestMethod" : "GET",
+				"absolutePath" : "/cgi-bin/view.cgi?vin=0&stream=1",
+				"port" : 80,
+			},
+			"transportRTMP" : {
+				"enabled" : true,
+				"authorization" : false,
+				"absolutePath" : "/ch0_1.264",
+				"port" : 80,
+			},
+		},
+		{
+			"id" : 103,
+			"idProperty" : { "type" : "integer", "mode" : "ro" },
+			"audioEncodeChannelID" : 103,
+			"audioEncodeChannelIDProperty" : { "type" : "integer", "mode" : "ro" },
+			"videoEncodeChannelID" : 103,
+			"videoEncodeChannelIDProperty" : { "type" : "integer", "mode" : "ro" },
+
+			"transportRTSP" : {
+				"enabled" : true,
+				"authorization" : false,
+				"absolutePath" : "/ch0_2.264",
+				"port" : 80,
+			},
+			"transportRTSPoverHTTP" : {
+				"enabled" : false,
+				"authorization" : false,
+				"requestMethod" : "GET",
+				"absolutePath" : "/RTSP/ch0_2.264",
+				"port" : 80,
+			},
+			"transportFLVoverHTTP" : {
+				"enabled" : true,
+				"authorization" : false,
+				"requestMethod" : "GET",
+				"absolutePath" : "/cgi-bin/view.cgi?vin=0&stream=2",
+				"port" : 80,
+			},
+			"transportRTMP" : {
+				"enabled" : true,
+				"authorization" : false,
+				"absolutePath" : "/ch0_2.264",
+				"port" : 80,
+			},
+		},
+	],
+}

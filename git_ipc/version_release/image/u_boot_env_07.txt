@@ -1,0 +1,14 @@
+verify=n
+ver=U-Boot 2012.11 (Nov 12 2012)
+bootdelay=1
+baudrate=115200
+ethaddr=00:9A:9B:9C:9D:9E
+ipaddr=192.168.1.10
+serverip=192.168.1.40
+netmask=255.255.255.0
+stdin=serial
+stdout=serial
+stderr=serial
+bootargs=mem=72M console=ttyAMA0,115200 root=0100 mtdparts=phys_mapped_flash:256K(uboot),128K(env),128K(logo),128K(config),1408K(kernel),6M(rootfs)
+bootcmd=cp.b 0x34200000 0xe1000000 0x600000;bootm 0x340a0000 0xe1000000
+

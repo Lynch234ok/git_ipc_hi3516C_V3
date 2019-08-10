@@ -1,0 +1,17 @@
+verify=n
+ver=U-Boot 2012.11 (Nov 12 2012)
+bootdelay=1
+baudrate=115200
+ethaddr=00:9A:9B:9C:9D:9E
+ipaddr=192.168.1.10
+serverip=192.168.1.40
+netmask=255.255.255.0
+stdin=serial
+stdout=serial
+stderr=serial
+bootargs=mem=43M console=ttyAMA0,115200 root=0100 init=/linuxrc mtdparts=hi_sfc:192K(uboot),64K(env),64K(user),704K(conf),2560K(kernel),9216K(rootfs),3584K(custom) ramdisk_size=5450
+set_led_gpio7_5=mw 0x200F00F4 0x01
+set_led_gpio7_3=mw 0x200F00EC 0x01
+set_led_gpio_dir=mw 0x201b0400 0x28
+set_led_gpio_enable=mw 0x201b00a0 0xFF
+bootcmd=${set_led_gpio7_3}; ${set_led_gpio7_5}; ${set_led_gpio_dir}; ${set_led_gpio_enable};sf probe 0;sf read 0x82000000 0x100000 0x280000;sf read 0x81700000 0x380000 0x600000;bootm 0x82000000 0x81700000;

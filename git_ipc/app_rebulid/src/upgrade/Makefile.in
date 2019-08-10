@@ -1,0 +1,10 @@
+
+SOURCES = \
+	  upgrade_demo.c  \
+	  upgrade_cgi.c   \
+
+INCLUDES = \
+
+
+LIBRARIES = \
+

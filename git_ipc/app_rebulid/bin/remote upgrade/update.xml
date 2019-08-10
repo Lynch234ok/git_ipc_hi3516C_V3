@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?> 
+<updateXml>
+	<message link="http://update.e-seenet.com:8088/ipcamsuite/CMS/update_detail.html"> </message> 
+	<product name="ipcam" format=".rom" version="1.3.11">
+		<file name="16C" model="N16C" hardware_sn="562121" format=".rom" md5="1bf062e192709a9aea5a83cf4968ecbb" method="covery">
+			<detail path="./" /> 
+			<url vendor="JUAN">http://update.e-seenet.com:8088/IPCAM/common/common562121.rom</url> 
+		</file>
+		<file name="18C" model="N18A" hardware_sn="561121" format=".rom" md5="1bf062e192709a9aea5a83cf4968ecbb" method="covery">
+			<detail path="./" /> 
+			<url vendor="JUAN">http://update.e-seenet.com:8088/IPCAM/common/common561121.rom</url> 
+		</file>
+		<file name="18C" model="N18A" hardware_sn="561120" format=".rom" md5="1bf062e192709a9aea5a83cf4968ecbb" method="covery">
+			<detail path="./" /> 
+			<url vendor="JUAN">http://update.e-seenet.com:8088/IPCAM/common/common561120.rom</url> 
+		</file>
+		<file name="18E" model="N18E" hardware_sn="573011" format=".rom" md5="1bf062e192709a9aea5a83cf4968ecbb" method="covery">
+			<detail path="./" /> 
+			<url vendor="JUAN">http://update.e-seenet.com:8088/IPCAM/common/common573011.rom</url> 
+		</file>
+		<file name="resource_18C" flash_size="16M" format=".rom" md5="71426d92f5650d9b248ecf595832aced" method="covery">
+			<detail path="./" /> 
+			<url vendor="JUAN">http://update.e-seenet.com:8088/IPCAM/common/resource_N18A.rom</url> 
+		</file>
+		<file name="resource_18E"  flash_size="8M" format=".rom" md5="71426d92f5650d9b248ecf595832aced" method="covery">
+			<detail path="./" /> 
+			<url vendor="JUAN">http://update.e-seenet.com:8088/IPCAM/common/resource_N18E.rom</url> 
+		</file>
+	</product>
+</updateXml>

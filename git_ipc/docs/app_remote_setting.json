@@ -1,0 +1,211 @@
+{
+	"Version" : "1.0.8",
+	"Method" : "get",
+	"MethodProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "get", "set"] },
+	"Authorization" :{
+		"Verify" : "",
+		"VerifyProperty" : { "type" : "string", "mode" : "wo"},
+		"username" : "",
+		"usernameroperty" : { "type" : "string", "mode" : "wo"},
+		"password" : "",
+		"passwordProperty" : { "type" : "string", "mode" : "wo"}
+	},
+	"IPCam":{
+			"DeviceInfo" :{
+				"FWVersion" : "1.6.0",
+				"FWVersionProperty" : { "type" : "string", "mode" : "ro"},
+				"Model" : "IPCAM",
+				"ModelProperty" : { "type" : "string", "mode" : "ro"},
+				"ID" : "1234567890",
+				"IDProperty" : { "type" : "string", "mode" : "ro"},
+				"OEMNumber" : "561121",
+				"OEMNumberProperty" : { "type" : "string", "mode" : "ro"},
+				"FWMagic" : "SlVBTiBJUENBTSBGSVJNV0FSRSBERVNJR05FRCBCWSBMQVc=",
+				"FWMagicProperty" : { "type" : "string", "mode" : "ro"}
+			},
+
+			"ModeSetting" :{
+				"AudioEnabled" : true,
+				"AudioEnabledProperty" : { "type" : "bool", "mode" : "rw"},		
+				"AudioVolume" :{
+					"AudioInputVolume" : 0,
+					"AudioInputVolumeProperty" : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 100, "def" : 0},
+					"AudioOutputVolume" : 0,
+					"AudioOutputVolumeProperty" : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 100, "def" : 0}
+				},
+				"SceneMode" : "auto",
+				"SceneModeProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "auto", "indoor", "outdoor"] },
+				"IRCutFilterMode" : "auto",
+				"IRCutFilterModeProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "auto", "daylight", "night"] },
+				"Definition" : "auto",
+				"DefinitionProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "auto", "fluency", "BD", "HD"] },
+				"ConvenientSetting" : "inside",
+				"ConvenientSettingProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "inside", "outside"] },
+				"imageStyle" : "standard",
+				"imageStyleProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "standard", "bright", "gorgeous"] },
+			},
+
+			"FisheyeSetting":{
+				"LensName": "m109",
+				"LensNameProperty": { "type" : "string", "mode" : "rw", "opt" : [ "m109", "none"] },
+				"FixMode": "wall",
+				"FixModeProperty": { "type" : "string", "mode" : "rw", "opt" : [ "wall", "cell", "table", "none"] },
+				"FixParam" :[
+					{
+						"id":1,
+						"idProperty" : { "type" : "integer", "mode" : "ro" },
+						"CenterCoordinateX" :640 ,
+						"CenterCoordinateXProperty" : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 2560, "def" : 640},
+						"CenterCoordinateY" : 480 ,
+						"CenterCoordinateYProperty"  : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 2560, "def" : 640},
+						"Radius" :480 ,
+						"RadiusProperty" : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 1944, "def" : 640},
+						"AngleX" :0 ,
+						"AngleXProperty" : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 180, "def" : 0},
+						"AngleY" :0 ,
+						"AngleYProperty" : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 180, "def" : 0},
+						"AngleZ" :0 ,
+						"AngleZProperty" : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 180, "def" : 0}						
+					},
+					{
+						"id":2,
+						"idProperty" : { "type" : "integer", "mode" : "ro" },
+						"CenterCoordinateX" :640 ,
+						"CenterCoordinateXProperty" : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 2560, "def" : 640},
+						"CenterCoordinateY" : 480 ,
+						"CenterCoordinateYProperty"  : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 2560, "def" : 640},
+						"Radius" :480 ,
+						"RadiusProperty" : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 1944, "def" : 640},
+						"AngleX" :0 ,
+						"AngleXProperty" : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 180, "def" : 0},
+						"AngleY" :0 ,
+						"AngleYProperty" : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 180, "def" : 0},
+						"AngleZ" :0 ,
+						"AngleZProperty" : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 180, "def" : 0}						
+					}
+				]
+			},
+
+			"AlarmSetting" :{
+				"MotionDetection" :{
+					"Enabled" : true,
+					"EnabledProperty" : { "type" : "bool", "mode" : "rw"},
+					"SensitivityLevel" : "lowest",
+					"DSensitivityLevelProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "lowest", "low", "normal", "high", "highest"] }
+				},
+				"MessagePushEnabled" : true,
+				"MessagePushEnabledProperty" : { "type" : "bool", "mode" : "rw"},
+				"ScheduleSupport" : true,
+				"ScheduleSupportProperty" : { "type" : "bool", "mode" : "rw"},
+				"ScheduleSupport" : true,
+				"ScheduleSupportProperty" : { "type" : "bool", "mode" : "rw"},
+				"MessagePushSchedule" :[{
+					"Weekday" : "0,1,2,3,4,5,6",
+					"WeekdayProperty" : { "type" : "string", "mode" : "rw"},
+					"BeginTime" : "01:00:33",
+					"BeginTimeProperty" : { "type" : "string", "mode" : "rw"},
+					"EndTime" : "5:00:55",
+					"EndTimeTimeProperty" : { "type" : "string", "mode" : "rw"},
+					"ID" : "0",
+					"IDProperty" : { "type" : "string", "mode" : "ro"}
+				},
+				{
+					"Weekday" : "1,2,3",
+					"WeekdayProperty" : { "type" : "string", "mode" : "rw"},
+					"BeginTime" : "08:00:33",
+					"BeginTimeProperty" : { "type" : "string", "mode" : "rw"},
+					"EndTime" : "12:00:55",
+					"EndTimeTimeProperty" : { "type" : "string", "mode" : "rw"},
+					"ID" : "1",
+					"IDProperty" : { "type" : "string", "mode" : "ro"}
+				},
+				{
+					"Weekday" : "0,1,3,5,6",
+					"WeekdayProperty" : { "type" : "string", "mode" : "rw"},
+					"BeginTime" : "15:00:33",
+					"BeginTimeProperty" : { "type" : "string", "mode" : "rw"},
+					"EndTime" : "18:00:55",
+					"EndTimeTimeProperty" : { "type" : "string", "mode" : "rw"},
+					"ID" : "2",
+					"IDProperty" : { "type" : "string", "mode" : "ro"}
+				}]			
+				
+			},
+			"SystemOperation" :{
+				"TimeSync" : {
+					"LocalTime" : "",
+					"LocalTimelProperty" : { "type" : "string", "mode" : "rw", "fmt": "iso8601" },
+					"UTCTime" : "",
+					"UTCTimeProperty" : { "type" : "string", "mode" : "rw", "fmt": "iso8601" },
+					"TimeZone" : 800,
+					"TimeZoneProperty" : { "type" : "int", "mode" : "rw"}
+				},
+				"Upgrade" : {
+					"Enabled":false,
+					"EnabledProperty" : { "type" : "bool", "mode" : "ro"},
+					"Status" : "",
+					"StatusProperty" : { "type" : "string", "mode" : "ro", "opt": [] },
+					"error" :"",
+					"errorProperty" : { "type" : "string", "mode" : "ro"}
+				}
+			},
+			"PromptSounds": {
+				"Enabled": true,
+				"EnabledProperty" : { "type" : "bool", "mode" : "rw"},
+				"Type":"chinese",
+				"TypeProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "chinese", "english", "french", "german", "russian", "korean", "japanese", "spanish", "arabic", "italian", "portuguese"] },
+				"TypeOption" : []    /* 返回可用的语言列表 */
+			},
+			"TfcardManager" :{
+				"Operation": "format",
+				"OperationProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "format"] },
+				"Status" : "ok",
+				"StatusProperty" : { "type" : "string", "mode" : "r0", "opt" : [ "ok", "exception", "already_format", "no_format", "no_tfcard", "formatting" ] },
+				"TotalSpacesize" : "7565",
+				"TotalSpacesizeProperty" : { "type" : "string", "mode" : "ro"},
+				"LeaveSpacesize" : "1256",
+				"LeaveSpacesizeProperty" : { "type" : "string", "mode" : "ro"},
+				"TimeRecordEnabled": true,
+				"TimeRecordEnabledProperty" : { "type" : "bool", "mode" : "rw"},
+				"ScheduleSupport" : true,
+				"ScheduleSupportProperty" : { "type" : "bool", "mode" : "rw"},
+				"TFcard_recordSchedule" :[{
+					"Weekday" : "0,1,2,3,4,5,6",
+					"WeekdayProperty" : { "type" : "string", "mode" : "rw"},
+					"BeginTime" : "00:00:30",
+					"BeginTimeProperty" : { "type" : "string", "mode" : "rw"},
+					"EndTime" : "23:59:30",
+					"EndTimeTimeProperty" : { "type" : "string", "mode" : "rw"},
+					"ID" : "0",
+					"IDProperty" : { "type" : "string", "mode" : "ro"}				
+				}]
+			},		
+			"ledPwm" : {
+				"channelCount" : 0,
+				"channelCountProperty" : { "type" : "integer", "mode" : "ro", "opt" : [0, 1, 2, 3] },
+				"switch" : 0,
+				"switchProperty" : { "type" : "integer", "mode" : "rw", "opt" : [0, 1] },
+				"channelInfo" : [
+					{
+						"type" : 1,
+						"typeProperty" : { "type" : "integer", "mode" : "ro", "opt" : [1, 2, 3] }, /* 亮度/色温/RGB */
+						"num" : 50,
+						"numProperty" : { "type" : "integer", "mode" : "rw", "min" : 0, "max" : 255 },
+						"channel" : 1,
+						"channelProperty" : { "type" : "integer", "mode" : "ro", "opt" : [1, 2, 3] },
+					},
+				],
+			},
+		},
+
+	"UserManager" :{
+		"Method": "modify",
+		"MethodProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "modify"] },
+		"Verify" : "",
+		"VerifyProperty" : { "type" : "string", "mode" : "rw"},
+		"username":"",
+		"usernameProperty" : { "type" : "string", "mode" : "ro"},
+		"password":"",
+		"passwordProperty" : { "type" : "string", "mode" : "wo"}
+	}
+}

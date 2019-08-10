@@ -1,0 +1,8 @@
+#!/bin/sh
+
+TEL="*99***1#"
+APN="cmnet"
+USR=""
+PWD=""
+PIN=""
+export TEL APN USR PWD PIN MODEM

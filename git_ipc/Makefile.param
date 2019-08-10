@@ -1,0 +1,53 @@
+
+RM := rm -rf
+ECHO := @echo
+LINK := ln -s
+CP := cp -av
+MKDIR := mkdir -p
+MV := mv -v
+MKIMAGE := mkimage -A arm -O linux
+MAKE := make
+
+PRJ_CROSS := arm-hismall-linux-
+PRJ_PATH  := /root/hidvr
+PRJ_INC_PATH := $(PRJ_PATH)/common
+
+SDK_PATH := $(PRJ_PATH)/sdk/sdk
+
+#SDK_FIX     :=  -mcpu=arm926ej-s
+
+HI_INC_PATH	:=	$(SDK_PATH)/include
+HI_LIB_PATH	:=	$(SDK_PATH)/lib
+
+INCS := -I./ \
+		-I$(HI_INC_PATH) \
+		-I$(PRJ_INC_PATH)
+
+HI_LIBS :=	$(HI_LIB_PATH)/libmpi.a \
+		$(HI_LIB_PATH)/lib_VoiceEngine.a \
+		$(HI_LIB_PATH)/lib_amr_spc.a \
+		$(HI_LIB_PATH)/lib_amr_fipop.a \
+		$(HI_LIB_PATH)/lib_aec.a \
+		$(HI_LIB_PATH)/lib_aacdec.a \
+		$(HI_LIB_PATH)/lib_aacenc.a \
+		$(HI_LIB_PATH)/libresampler.a \
+		$(HI_LIB_PATH)/libloadbmp.a \
+		$(HI_LIB_PATH)/libtde.a \
+
+JUAN_LIB := $(PRJ_INC_PATH)/libjuan.a
+
+CC  := @echo -n .;$(PRJ_CROSS)gcc
+CXX := @echo -n .;$(PRJ_CROSS)g++
+AR  := $(PRJ_CROSS)ar -r
+#STRIP := $(PRJ_CROSS)strip -g
+STRIP := $(PRJ_CROSS)strip
+
+CFLAGS := -Wall -O0 -g3 -Wl,--gc-sections --function-sections -c $(SDK_FIX)
+#CFLAGS := -Wall -O2 -g3 -c $(SDK_FIX)
+LDFLAGS := -Wl,--gc-sections
+
+first:all
+
+$(JUAN_LIB):$(wildcard ../common/*.c) $(wildcard ../common/*.h) ../conf.h
+	$(MAKE) -C $(PRJ_INC_PATH) all
+

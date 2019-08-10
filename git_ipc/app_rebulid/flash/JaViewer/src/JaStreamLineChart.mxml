@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%"
+		 initialize="init()">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.charts.chartClasses.AxisLabelSet;
+			import mx.charts.chartClasses.IAxis;
+			import mx.collections.ArrayCollection;
+			import mx.formatters.DateFormatter;
+			import mx.skins.halo.PanelSkin;
+			
+			[Bindable]
+			private var x_max_label:Date = new Date();
+			[Bindable]
+			private var x_min_label:Date = new Date();
+			private var x_label:Date = new Date();
+			
+			private var date_format:DateFormatter = null;
+//			private var dateVar:Date;
+			
+			[Bindable]
+			private var chart_set:ArrayCollection = null; //= new ArrayCollection([{x: x_label, y: 0} ]);
+			private const chart_set_max:uint = 100;
+			
+			private const bps_sum_sec:int = 5;
+			private const fps_sum_sec:int = 5;
+			private var bps_collection:ArrayCollection = new ArrayCollection([{bps: 0}])
+			private var fps_collection:ArrayCollection = new ArrayCollection([{afps: 0}])
+				
+			private function init():void
+			{	
+				chart_set = new ArrayCollection([{x: x_label, y: 0} ]);
+				date_format = new DateFormatter();
+				
+				date_format.formatString = "HH:NN:SS";
+				var dx:Date = new Date();
+				dx.setMinutes(dx.getMinutes() + 1, dx.getSeconds(), dx.getMilliseconds());
+				x_max_label = dx;
+				// init chart y range
+				axis_y.minimum = 0.0;
+				axis_y.maximum = 8.0;
+				// panel init
+				//var panel_skin:PanelSkin = panel.skin as PanelSkin;
+				
+			}
+			
+			private function xFieldLabel(labelValue:Object, previousValue:Object, d:IAxis):String
+			{
+				return date_format.format(labelValue);
+			}
+			
+			public function addData(mbps:Number,fps:Number):void
+			{
+				var dm:Date = new Date();
+				var i:Number = 0;
+				dm.setTime(x_label.getTime());
+				dm.setSeconds(dm.getSeconds()+1, dm.getMilliseconds());
+				x_label = dm;
+				
+				if (x_label.getTime() > x_max_label.getTime()) {
+					x_max_label = x_label;
+					var dx:Date = new Date();
+					dx.setMinutes(dx.getMinutes()-1, dx.getSeconds(), dx.getMilliseconds());
+					x_min_label = dx;
+				}
+				
+				mbps.toFixed(3);
+				chart_set.addItem({x: x_label, y: mbps});
+//				trace("length = " + chart_set.length);
+				if(chart_set.length > chart_set_max){
+					chart_set.removeItemAt(0); // remove an item keep the collection less than 'chart_set_max'
+				}
+				
+				//trace("Current: " + mbps);
+				cur_bps.text = "Current: " + Number(mbps.toFixed(3)).toString() + "Mb/s";
+				cur_fps.text = "Current: " + Number(fps.toFixed(3)).toString() + " fps";
+				
+				// 5 seconds to calculate a average
+				bps_collection.addItem({bps: mbps});
+				if(bps_collection.length > bps_sum_sec){
+					bps_collection.removeItemAt(0);
+				}			
+				
+				var bps_sum:Number = 0;
+				for(i= 0; i < bps_collection.length; ++i){
+					bps_sum += bps_collection.getItemAt(i).bps;
+				}
+				bps_sum /= bps_sum_sec; // average
+				aver_bps.text = "Average: " + Number(bps_sum.toFixed(3)).toString() + "Mb/s in " + bps_sum_sec + "s";
+				
+				// calculate average fps
+				fps_collection.addItem({afps: fps});
+				if(fps_collection.length > fps_sum_sec){
+					fps_collection.removeItemAt(0);
+				}
+				var fps_sum:Number = 0;
+				for(i = 0; i < fps_collection.length; ++i){
+					fps_sum += fps_collection.getItemAt(i).afps;
+				}
+				fps_sum /= fps_sum_sec; // average
+				aver_fps.text = "Average: " + Number(fps_sum.toFixed(3)).toString() + "fps in " + fps_sum_sec + "s";
+			}
+		]]>
+	</fx:Script>
+	
+	<mx:Canvas id="panel" height="100%" width="100%" backgroundColor="#000000" cornerRadius="3" borderVisible="true" borderStyle="solid" borderColor="#c0c0c0" 
+			   verticalScrollPolicy="off" horizontalScrollPolicy = "off">
+		<mx:LineChart id="line_chart" height="100%" width="100%"
+					  paddingLeft="{width * 0.01}" 
+					  paddingRight="{width * 0.01}"
+					  paddingTop="{height * 0.05}" 
+					  paddingBottom="{height * 0.01}"
+					  showDataTips="true">
+			
+			<mx:backgroundElements>
+				<mx:GridLines id="gridLines"
+							  verticalTickAligned="true">
+					<mx:verticalStroke>
+						<s:SolidColorStroke color="haloSilver"
+								   weight="1"
+								   alpha="1.0" />
+					</mx:verticalStroke>
+					<mx:horizontalStroke>
+						<mx:SolidColorStroke color="white"
+								   weight="1"
+								   alpha="0.1" />
+					</mx:horizontalStroke>
+					<mx:horizontalFill>
+						<mx:SolidColor color="haloSilver"
+									   alpha="0.1" />
+					</mx:horizontalFill>
+				</mx:GridLines>
+			</mx:backgroundElements>
+			
+			<mx:horizontalAxis>
+				<mx:DateTimeAxis id="axis_x" title="Time (hh:mm:ss)" dataUnits="seconds" minimum="{x_min_label}" maximum="{x_max_label}" labelFunction="xFieldLabel" /> 
+			</mx:horizontalAxis>
+			<mx:horizontalAxisRenderers>
+				<mx:AxisRenderer axis="{axis_x}" color="#ffffff"/>
+			</mx:horizontalAxisRenderers>
+			<mx:verticalAxis>
+				<mx:LinearAxis id="axis_y" title="Bitrate (Mb/s)" baseAtZero="true" interval="1" />
+			</mx:verticalAxis>
+			<mx:verticalAxisRenderers>
+				<mx:AxisRenderer axis="{axis_y}" color="#ffffff"/>
+			</mx:verticalAxisRenderers>
+			<mx:series>
+				<mx:LineSeries yField="y" xField="x"  adjustedRadius="2"  form="segment" displayName="Bitrate" dataProvider="{this.chart_set}">
+					<mx:lineStroke>
+						<mx:LinearGradientStroke weight="4" caps="square" spreadMethod="reflect">
+							<mx:GradientEntry color="#a5bc4e" ratio="0.3" alpha="1"/>
+						</mx:LinearGradientStroke>
+					</mx:lineStroke>
+				</mx:LineSeries>
+			</mx:series>
+		</mx:LineChart>
+		<s:Label id="cur_bps" x="{this.width * 0.6}" y="10" width="40%" height="10%" text="Current:" color="#ffffff"/>
+		<s:Label id="aver_bps" x="{this.width * 0.6}" y="20" width="40%" height="10%" text="Average: 0" color="#ffffff"/>
+		<s:Label id="cur_fps" x="{this.width * 0.6}" y="30" width="40%" height="10%" text="Average: 0" color="#ffffff"/>
+		<s:Label id="aver_fps" x="{this.width * 0.6}" y="40" width="40%" height="10%" text="Average: 0" color="#ffffff"/>
+	</mx:Canvas>
+</s:Group>

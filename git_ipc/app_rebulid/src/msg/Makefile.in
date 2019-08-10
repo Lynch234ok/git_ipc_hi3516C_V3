@@ -1,0 +1,15 @@
+
+SOURCES = \
+	  cJSON.c \
+	  HTTPClientWrapper.c \
+	  HTTPClientString.c \
+	  HTTPClientAuth.c \
+	  HTTPClient.c \
+	  msg_push.c \
+
+
+INCLUDES = \
+
+
+LIBRARIES = \
+

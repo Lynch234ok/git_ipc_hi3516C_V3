@@ -1,0 +1,15 @@
+
+SOURCES = \
+	  pan_tilt.c \
+	  stepper_motor.c \
+	  bsp_reg.c \
+	  jaThread.c \
+	  AutoFocus.c 
+
+
+INCLUDES = \
+	./include/
+
+
+LIBRARIES = \
+

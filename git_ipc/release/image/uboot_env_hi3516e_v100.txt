@@ -1,0 +1,13 @@
+verify=n
+ver=U-Boot 2012.11 (Nov 12 2012)
+bootdelay=0
+baudrate=115200
+ethaddr=00:9A:9B:9C:9D:9E
+ipaddr=192.168.1.10
+serverip=192.168.1.40
+netmask=255.255.255.0
+stdin=serial
+stdout=serial
+stderr=serial
+bootargs=mem=40M console=ttyAMA0,115200 root=0100 init=/linuxrc mtdparts=hi_sfc:192K(uboot),64K(env),64K(user),512K(conf),2048K(kernel),4032K(rootfs),1280K(custom) ramdisk_size=4096
+bootcmd=sf probe 0;sf read 0x82110000 0xD0000 0x200000;sf read 0x82310000 0x2D0000 0x3F0000;bootm 0x82110000 0x82310000;

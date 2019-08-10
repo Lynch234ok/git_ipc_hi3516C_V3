@@ -1,0 +1,54 @@
+
+ENTRY_POINT := 0xe1000000
+LOAD_ADDRESS := 0xe1000000
+
+ROOTFS_NAME := "JUAN root filesystem($(shell date "+%d/%m/%Y"))"
+MODULE_NAME := "rootfs"
+
+ROOTFS_PATH := "$(CURDIR)/rootfs/"
+IMAGE_PATH := "$(CURDIR)/image/"
+
+EXT2_TEMP := "$(CURDIR)/rootfs.tmp"
+EXT2_MOUNT := "$(CURDIR)/ext2_mnt"
+EXT2_SIZE := 48K
+
+MKIMAGE := "./tools/mkimage"
+MKSQUASHFS := "./tools/mksquashfs_3.4"
+MKFSJFFS2 := "./tools/mkfs.jffs2"
+MKFSEXT2 := "./tools/mkfs.ext2"
+
+
+.PHONY: rootfs backup
+rootfs : squash
+
+mark :
+	rm -Rf rootfs/*_build
+	touch rootfs/$(shell date "+%Y%m%d_%H%M_build")
+
+squash : mark
+	$(MKSQUASHFS) rootfs/ rootfs.squash
+	$(MKIMAGE) -A arm -n "JUAN filesystem" -a 0xe1000000 -e 0xe1000000 -T ramdisk -C gzip -d rootfs.squash $(IMAGE_PATH)rootfs.squash.uboot
+	rm -Rf rootfs.squash
+	
+ext2 : mark
+	mkdir $(EXT2_MOUNT)
+	
+	dd if=/dev/zero of=$(EXT2_TEMP) bs=1K count=$(EXT2_SIZE)
+	$(MKFSEXT2) -F -m 0 -i 2000 $(EXT2_TEMP)
+	
+	mount -o loop -t ext2 $(EXT2_TEMP) $(EXT2_MOUNT)
+	cp -a $(ROOTFS_PATH)/* $(EXT2_MOUNT)
+	umount $(EXT2_MOUNT)
+
+	gzip -9f $(EXT2_TEMP)
+	sync
+	$(MKIMAGE) -n $(ROOTFS_NAME) -a $(LOAD_ADDRESS) -e $(ENTRY_POINT) -T ramdisk -C gzip -d $(EXT2_TEMP).gz $(MODULE_NAME).$@.uboot
+	rm -Rf $(EXT2_MOUNT) $(EXT2_TEMP).gz
+
+jffs2 : mark
+	$(MKFSJFFS2) -d rootfs -o rootfs.jffs2
+	$(MKIMAGE) -A arm -n $(ROOTFS_NAME) -a 0x340a0000 -e 0x340a0000 -T ramdisk -C gzip -d rootfs.jffs2 rootfs.jffs2.uboot
+
+
+backup:
+	tar --force-local -zcvf `date "+backup/rootfs-%Y%m%d-%H%M.tar.gz"` rootfs;

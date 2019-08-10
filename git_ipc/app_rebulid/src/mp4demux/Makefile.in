@@ -1,0 +1,10 @@
+
+SOURCES = \
+	  hi_ffmpeg_format.c 
+
+INCLUDES = \
+	../../include/\
+	../../include/mp4demux
+
+LIBRARIES = \
+

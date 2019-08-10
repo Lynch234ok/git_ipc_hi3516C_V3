@@ -1,0 +1,37 @@
+
+ifeq ($(DEVICE_MODEL),hi3516e_v1_inc)
+SOURCES = \
+	./libMp4/TS_Read.c \
+	./libMp4/TS_Write.c \
+	$(wildcard ./libmpeg/*.c) \
+	$(wildcard ./libTfcard/*.c) \
+	NK_Tfcard.c \
+
+INCLUDES = \
+	../../include/sdk/ \
+	../../include/ \
+	./include/ \
+	./ \
+
+else
+	  
+SOURCES = \
+	app_tfcard.c \
+	packfile.c \
+	rl_pack.c \
+	tfcard.c \
+	tfcard_play.c \
+
+INCLUDES = \
+	../../include/sdk/\
+	../../include\
+	../../include/n1\
+	../../include/NkEmbedded\
+	../../include/NkUtils\
+	../
+
+
+LIBRARIES = \
+
+endif
+

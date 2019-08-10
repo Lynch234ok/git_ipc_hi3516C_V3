@@ -1,0 +1,8 @@
+#!/bin/sh
+
+TEL="*99#"
+APN=""
+USR="card"
+PWD="card"
+PIN=""
+export TEL APN USR PWD PIN MODEM

@@ -1,0 +1,14 @@
+
+SOURCES = \
+	  hisi_hal.c \
+	  memmap.c \
+	  stepper.c \
+	  app_motor.c
+
+
+INCLUDES = \
+	./include/
+
+
+LIBRARIES = \
+

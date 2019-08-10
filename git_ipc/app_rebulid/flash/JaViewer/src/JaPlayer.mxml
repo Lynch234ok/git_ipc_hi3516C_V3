@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:fx="http://ns.adobe.com/mxml/2009"
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" xmlns:local="*" 
+		 borderStyle="solid" borderColor="#00ff00" borderAlpha="0.5" 
+		 verticalScrollPolicy="off" horizontalScrollPolicy = "off"
+		 click="group1_clickHandler(event)"
+		 resize="group1_resizeHandler(event)"
+		 >
+	
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+		
+		<s:Parallel id="show_chart">
+			<!--<s:Rotate3D angleYFrom="-90" angleYTo="0" />-->
+			<s:Fade alphaFrom="0.0" alphaTo="0.5" />
+		</s:Parallel>
+		<s:Parallel id="hide_chart">
+			<!--<s:Rotate3D angleYFrom="0" angleYTo="-90" />-->
+			<s:Fade alphaFrom="0.5" alphaTo="0.0" />
+		</s:Parallel>
+		
+		<s:Parallel id="show_box">
+			<s:Rotate3D angleXFrom="-90" angleXTo="0" />
+			<s:Fade alphaFrom="0.0" alphaTo="0.5" />
+		</s:Parallel>
+		<s:Parallel id="hide_box">
+			<s:Rotate3D angleXFrom="0" angleXTo="-90" />
+			<s:Fade alphaFrom="0.5" alphaTo="0.0" />
+		</s:Parallel>
+		
+		<local:JaVideo id="ja_video" width="{this.width}" height="{this.height}" />
+	</fx:Declarations>
+	
+	
+	<fx:Script>
+		<![CDATA[
+			import mx.charts.CategoryAxis;
+			import mx.collections.ArrayCollection;
+			import mx.events.ResizeEvent;
+			
+			private var timer:Timer = new Timer(1000);
+			private var bps_capture:ArrayCollection = null;
+			
+			private function timerHandler(event:TimerEvent):void
+			{
+				var bytes_speed:Number = Number(ja_video.bytesSpeed);
+				var cur_fps:Number = 0;
+				if(ja_video.ns != null){
+					cur_fps= Number(ja_video.ns.currentFPS);
+				}
+//				trace(ja_video.bytesSpeed.toFixed(3));
+				if(!bps_capture){
+					bps_capture = new ArrayCollection([{bps: bytes_speed}]);
+				}
+				bps_capture.addItem({bps: bytes_speed * 8});
+				if(bps_capture.length > 3){
+					bps_capture.removeItemAt(0); // keep only few item in collecion
+				}
+				var bps_sum:Number = 0;
+				for(var i:int = 0; i < bps_capture.length; ++i){
+					bps_sum += bps_capture.getItemAt(i).bps;
+//					trace(i + "=" + bps_capture.getItemAt(i).bps);
+				}
+				const bps_aver:Number = (bps_sum / bps_capture.length) / (1000 * 1000);
+//				trace("aver=" + bps_aver +" len=" + bps_capture.length);
+				ja_chart.addData(bps_aver,cur_fps);
+				
+				StretchVideo(video_stretch);
+//				trace(ja_video.videoWidth + " " + ja_video.videoHeight);
+			}
+			
+			public function ConnectFLV(url:String):void
+			{
+				loadPoster();
+				
+				ja_video.ConnectFLV(url);
+				player_ui.addChild(ja_video);
+				
+				// start a timer to data statistics
+				timer.addEventListener(TimerEvent.TIMER, timerHandler);
+				timer.start();
+			}
+			
+			public function ConnectRTMP(url:String, stream_name:String): void
+			{
+				loadPoster();
+				
+				ja_video.ConnectRTMP(url, stream_name);
+				player_ui.addChild(ja_video);
+				
+				// start a timer to data statistics
+				timer.addEventListener(TimerEvent.TIMER, timerHandler);
+				timer.start();
+			}
+			
+			public function Disconnect():void
+			{
+				if(poster_loader){
+					player_poster.removeChild(poster_loader);
+					poster_loader = null;
+				}
+				ja_video.Disconnect();
+				try{
+					player_ui.removeChild(ja_video);
+				}catch(e:Error){
+					trace("Disconnect error!");
+				}
+			}
+			
+			public function SetMute(mute:Boolean):void
+			{
+				ja_video.SetMute(mute);
+			}
+			
+			private var video_stretch:Boolean = true;
+			public function StretchVideo(stretch:Boolean):void
+			{
+				var to_width:uint = this.width - 2;
+				var to_height:uint = this.height - 2;
+				
+				video_stretch = stretch;
+				if(stretch){
+					// full screen display
+					ja_video.x = 0;
+					ja_video.y = 0;
+					ja_video.width = to_width;
+					ja_video.height = to_height;
+				}else{
+					if(Number(to_width / to_height) >= Number(ja_video.videoWidth / ja_video.videoHeight)){
+						// follow height
+						ja_video.height = to_height;
+						ja_video.width = Number(ja_video.videoWidth / ja_video.videoHeight) * ja_video.height; // keep ratio
+						ja_video.x = (to_width - ja_video.width) / 2; // align to center
+						ja_video.y = 0;
+					}else{
+						// follow width
+						ja_video.width = to_width;
+						ja_video.height = Number(ja_video.videoHeight / ja_video.videoWidth) * ja_video.width; // keep ratio
+						ja_video.x = 0;
+						ja_video.y = (to_height - ja_video.height) / 2; // align to center
+					}
+				}
+				
+				if(poster_loader){
+					poster_loader.x = ja_video.x;
+					poster_loader.y = ja_video.y;
+					poster_loader.width = ja_video.width;
+					poster_loader.height = ja_video.height;
+				}
+			}
+			
+			public function SetAudio(enable:Boolean):void
+			{
+				if(ja_video.ns != null)
+				{
+					ja_video.ns.receiveAudio(enable);
+				}
+			}
+			
+			public function SetBufferTime(time:int):void
+			{
+				if(ja_video.ns != null)
+				{
+					ja_video.ns.bufferTime = time;
+				}			
+			}
+			// 显示码流曲线图
+			public function ShowLineChart(visible:Boolean):void
+			{
+				if(ja_chart){
+					ja_chart.visible = visible;
+				}
+			}
+			
+			// 预览图片部分
+			private var loader_last_count:int = 0;
+			private var loader_idle:int = 0;
+			private var loader_timer:Timer = null;
+			
+			public var poster_url:String = null; // = "http://192.168.2.45/snapshot?size=352x288";
+			private var poster_request:URLRequest = null;
+			private var poster_loader:Loader = null;
+			
+			private function onLoadPosterComplete(event:Event):void
+			{
+				trace("loader completed!");
+				try{
+					poster_loader.width = player_poster.width;
+					poster_loader.height = player_poster.height;
+				}catch(e:Error){
+					trace("无法访问空对象引用的属性或方法。");
+				}
+			}
+			
+			private function loadPoster():void
+			{
+				if(null != poster_url){
+					poster_request = new URLRequest(poster_url);
+					poster_loader = new Loader();
+					poster_loader.contentLoaderInfo.addEventListener(Event.COMPLETE,onLoadPosterComplete);
+					player_poster.addChild(poster_loader);
+					poster_loader.load(poster_request);
+				}
+			}
+			
+			protected function group1_clickHandler(event:MouseEvent):void
+			{
+				// TODO Auto-generated method stub
+				if(event.ctrlKey){
+					StretchVideo(!video_stretch);
+				}else if(event.shiftKey){
+					ShowLineChart(!ja_chart.visible);
+				}
+			}
+			
+			protected function group1_resizeHandler(event:ResizeEvent):void
+			{
+				// TODO Auto-generated method stub
+				StretchVideo(video_stretch);
+			}
+			
+		]]>
+	</fx:Script>
+	<mx:Image id="player_poster" x="0" y="0" width="100%" height="100%" visible="true" />
+	<mx:UIComponent id="player_ui" x="0" y="0" width="{this.width - 2}" height="{this.height - 2}" />
+	<local:JaStreamLineChart id="ja_chart" alpha="0.5" showEffect="{show_chart}" hideEffect="{hide_chart}" visible="false" 
+							 x="0" y="0" width="100%" height="100%"
+							 />
+	
+</mx:Canvas>

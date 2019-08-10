@@ -1,0 +1,51 @@
+{
+	"Version" : "1.0.1",
+	"FixMode": "cell",
+	"FixModeProperty": { "type" : "string", "mode" : "rw", "opt" : [ "wall", "cell", "table", "none"] },
+	"ModelName" : "P6",
+	"ModelNameProperty"  : { "type" : "string", "mode" : "ro"},
+	"SN" :{
+		"ChipModel" : "3516D100",
+		"ChipModelProperty"  : { "type" : "string", "mode" : "ro"},
+		"ProductModel" : "20000600",
+		"ProductModelProperty"  : { "type" : "string", "mode" : "ro"}
+	},
+	"Audio" :{
+		"AudioInputVolume" : 50,
+		"AudioInputVolumeProperty"  : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 100, "def" : 50},
+		"AudioOutputVolume" : 50,
+		"AudioOutputVolumeProperty"  : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 100, "def" : 50}
+	},
+	"Video" :{
+		"videoChannel" : [
+			{
+				"id":1,
+				"idProperty"  : { "type" : "int", "mode" : "ro"},
+				"bitRateControlType" : "VBR",
+				"bitRateControlTypeProperty" : { "type" : "string", "mode" : "rw", "opt" : ["CBR", "VBR"] },
+				"Bps" : 3072,
+				"BpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 32, "max" : 5000 },	
+				"Fps" : 15,
+				"FpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 5, "max" : 30 },		
+				"Resolution" : "1944x1944",
+				"ResolutionProperty" : { "type" : "string", "mode" : "rw", "opt" : ["1944x1944"]}
+			},
+			{
+				"id":2,
+				"idProperty"  : { "type" : "int", "mode" : "ro"},
+				"bitRateControlType" : "VBR",
+				"bitRateControlTypeProperty" : { "type" : "string", "mode" : "rw", "opt" : ["CBR", "VBR"] },
+				"Bps" : 512,
+				"BpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 32, "max" : 5000 },	
+				"Fps" : 15,
+				"FpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 5, "max" : 30 },		
+				"Resolution" : "640x640",
+				"ResolutionProperty" : { "type" : "string", "mode" : "rw", "opt" : ["640x640"] }
+			}
+		]
+	},
+	"irCutControlMode": "hardware",
+	"irCutControlModeProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "hardware", "software"] }
+}
+
+	

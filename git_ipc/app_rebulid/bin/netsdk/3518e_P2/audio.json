@@ -1,0 +1,36 @@
+{
+	"version" : "1.0.4",
+	
+	"audioInput" : {
+		"audioInputChannel" : [
+			{
+				"id" : 1,
+				"idProperty" : { "type" : "integer", "mode" : "ro" },
+				"workMode" : "input&output",
+				"workModeProperty" : { "type" : "string", "mode" : "ro", "opt" : ["input", "output", "input&output"] },
+				"sampleRate" : 8000,
+				"sampleRateProperty" : { "type" : "integer", "mode" : "ro", "opt" : [8000] },
+				"sampleBitWidth" : 16,
+				"sampleBitWidthProperty" : { "type" : "integer", "mode" : "ro", "opt" : [8,16] },
+				"inputVolume" : 100,
+				"inputVolumeProperty" : { "type" : "integer", "mode" : "rw", "min" : 0, "max" : 100 },
+				"outputVolume" : 100,
+				"outputVolumeProperty" : { "type" : "integer", "mode" : "rw", "min" : 0, "max" : 100 },
+			},
+		],
+	},
+
+	"audioEncode" : {
+		"audioEncodeChannel" : [
+			{
+				"id" : 101,
+				"idProperty" : { "type" : "integer", "mode" : "ro" },
+				"enabled" : true,
+				"audioInputChannelID" : 1,
+				"audioInputChannelIDProperty" : { "type" : "integer", "mode" : "ro" },
+				"codecType" : "G.711alaw",
+				"codecTypeProperty" : { "type" : "integer", "mode" : "rw", "opt" : ["G.711alaw", "G.711ulaw"] },
+			},
+		],
+	},
+}

@@ -1,0 +1,44 @@
+#!/bin/sh
+
+DIAL_CMD="/tmp/dial-cmd"
+
+DIAL_LINE=""
+DIAL_LINE=$DIAL_LINE" TIMEOUT    5"
+DIAL_LINE=$DIAL_LINE" ECHO       ON"
+DIAL_LINE=$DIAL_LINE" ABORT      '\nBUSY\r'"
+DIAL_LINE=$DIAL_LINE" ABORT      '\nERROR\r'"
+DIAL_LINE=$DIAL_LINE" ABORT      '\nNO ANSWER\r'"
+DIAL_LINE=$DIAL_LINE" ABORT      '\nNO CARRIER\r'"
+DIAL_LINE=$DIAL_LINE" ABORT      '\nNO DIALTONE\r'"
+DIAL_LINE=$DIAL_LINE" ABORT      '\nRINGING\r\n\r\nRINGING\r'"
+DIAL_LINE=$DIAL_LINE" ''         AT"
+DIAL_LINE=$DIAL_LINE" OK         ATZ"
+DIAL_LINE=$DIAL_LINE" OK         ATE1"
+
+
+if [ "$MORE1" != "" ] ; then
+	DIAL_LINE=$DIAL_LINE" OK '$MORE1'"
+fi
+if [ "$MORE2" != "" ] ; then
+	DIAL_LINE=$DIAL_LINE" OK '$MORE2'"
+fi
+if [ "$MORE3" != "" ] ; then
+	DIAL_LINE=$DIAL_LINE" OK '$MORE3'"
+fi
+
+if [ "$USR" != "" -a "$PWD" != "" ] ; then
+	DIAL_LINE=$DIAL_LINE" OK 'AT\^PPPCFG=\"$USR\",\"$PWD\"'"
+fi
+
+if [ "$APN" != "" ] ; then
+	DIAL_LINE=$DIAL_LINE" OK 'AT+CGDCONT=1,\"IP\",\"$APN\",,,0'"
+else
+	DIAL_LINE=$DIAL_LINE" OK 'AT+CGDCONT=1,\"IP\",,,,0'"
+fi
+
+if [ "$TEL" != "" ] ; then 
+	DIAL_LINE=$DIAL_LINE" OK ATD$TEL  TIMEOUT 25  CONNECT /c/d"
+fi
+
+rm $DIAL_CMD -rf
+echo $DIAL_LINE >> $DIAL_CMD

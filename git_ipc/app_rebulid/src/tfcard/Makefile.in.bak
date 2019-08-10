@@ -1,0 +1,13 @@
+
+	  
+SOURCES = $(wildcard ./*.c)
+
+INCLUDES = \
+	../../api/src/\
+	../../include/sdk/\
+	../../include/NkEmbedded/\
+	../
+
+
+LIBRARIES = \
+

@@ -1,0 +1,34 @@
+#!/bin/sh
+PATH=/sbin:/bin:/usr/sbin:/usr/bin
+
+PM_EVENT="$1"
+LOG_TAG="${PM_EVENT}: "
+
+KLOG() {
+        echo "$LOG_TAG $@" > /dev/kmsg
+}
+
+KLOG "$PM_EVENT"
+
+case "$PM_EVENT" in
+        # suspend-to-disk
+        "PM_HIBERNATION_PREPARE")
+        #echo 1 > /proc/sys/kernel/printk
+        ;;
+
+        "PM_POST_FREEZE_PROCESS")
+        ;;
+
+        "PM_POST_HIBERNATION")
+        # you may want this, but you have to make sure that
+        # the 'suspend' service/script was called while beeing suspending.
+        # echo 7 > /proc/sys/kernel/printk
+	# echo "recover" > /dev/hiber_fifo
+        ;;
+
+        # suspend-to-mem
+        "PM_SUSPEND_PREPARE")
+        ;;
+        "PM_POST_SUSPEND")
+        ;;
+esac

@@ -1,0 +1,20 @@
+文件系统：
+
+1、进入 .../gm_ipc/release/backup/ 目录下 将最新的rootfs解压到.../gm_ipc/release/ 目录下
+	例如：tar -zxvf rootfs-20130116-1119-18a.tar.gz -C ../
+
+
+
+
+生成镜像过程：
+
+1、进入.../gm_ipc/app_rebulid/ 目录下 make all或make生成ipcam_app
+2、进入.../gm_ipc/release/ 目录下 make，生成FW***.bin和FW***.rom  ,bin文件用于uboot烧写，rom文件用于网络升级
+
+或
+进入.../gm_ipc/app_rebulid/ 目录下 make image
+
+
+
+uboot烧写：
+	例如：setenv serverip 192.168.1.36;setenv ipaddr 192.168.1.34;tftp 0x82000000 1.bin;sf probe 0;sf erase 0x0 0x1000000;sf write 0x82000000 0x0 0x1000000      (必须保证tftp开启以及文件存在)

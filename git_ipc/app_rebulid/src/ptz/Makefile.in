@@ -1,0 +1,11 @@
+
+SOURCES = \
+	  step.c \
+	  steper_ctrl.c \
+	  ptz.c \
+
+INCLUDES = \
+
+
+LIBRARIES = \
+

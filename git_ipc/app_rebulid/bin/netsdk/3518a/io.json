@@ -1,0 +1,37 @@
+{
+	"version" : "1.0.2",
+
+	"alarmInput" : {
+		"alarmInputChannel" : [
+			{
+				"id" : 1,
+				"idProperty" : { "type" : "integer", "mode" : "ro" },
+				"active" : {
+					"defaultState" : "low",
+					"defaultStateProperty" : { "type" : "string", "mode" : "rw", "opt" : ["low", "high"] },
+					"activeState" : "high",
+					"activeStateProperty" : { "type" : "string", "mode" : "rw", "opt" : ["low", "high"] },
+				},
+			},
+		],
+	},
+	
+	"alarmOutput" : {
+		"alarmOutputChannel" : [
+			{
+				"id" : 1,
+				"idProperty" : { "type" : "integer", "mode" : "ro" },
+				"active" : {
+					"defaultState" : "low",
+					"defaultStateProperty" : { "type" : "string", "mode" : "rw", "opt" : ["low", "high"] },
+					"activeState" : "high",
+					"activeStateProperty" : { "type" : "string", "mode" : "rw", "opt" : ["low", "high"] },
+				},
+				"powerOnState" : "pulse",
+				"powerOnStateProperty" : { "type" : "string", "mode" : "rw", "opt" : ["continuous", "pulse"] },
+				"pulseDuration" : 5000, // in milliseconds
+				"pulseDurationProperty" : { "type" : "integer", "mode" : "rw", "min" : 1000 },
+			},
+		],
+	},
+}

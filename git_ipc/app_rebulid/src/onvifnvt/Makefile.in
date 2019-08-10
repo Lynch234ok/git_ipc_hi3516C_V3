@@ -1,0 +1,12 @@
+
+	  
+SOURCES = $(wildcard ./*.c)
+
+INCLUDES = \
+	../../include/\
+	../../include/http_auth\
+	../
+
+
+LIBRARIES = \
+

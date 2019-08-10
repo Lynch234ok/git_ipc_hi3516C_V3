@@ -1,0 +1,64 @@
+{
+	"version" : "1.0.6",
+	
+	"image":{
+			"sceneMode" : "auto",
+			"sceneModeProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "auto", "indoor", "outdoor"] },
+			"irCutFilter" : {
+				"irCutControlMode" : "hardware",
+				"irCutControlModeProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "hardware", "software"] },
+				"irCutMode" : "auto",
+				"irCutModeProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "auto", "daylight", "night"] }
+			},
+			
+			"manualSharpness" :{
+				"enabled" : false,
+				"sharpnessLevel" : 170,
+				"sharpnessLevelProperty" : { "type" : "integer", "mode" : "rw", "min" : 0, "max" : 255, "def" : 170 }
+			},
+
+			"denoise3d" : {
+				"enabled" : true,
+				"denoise3dStrength" : 3,
+				"denoise3dStrengthProperty" : { "type" : "integer", "mode" : "rw", "min" : 1, "max" : 5, "def" : 1 }
+			},
+			
+			"WDR" : {
+				"enabled" : false,
+				"WDRStrength" : 3,
+				"WDRStrengthProperty" : { "type" : "integer", "mode" : "rw", "min" : 1, "max" : 5, "def" : 3 }
+			},
+			
+		
+			"exposureMode" : "auto",
+			"exposureModeProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "auto", "bright", "dark"] },
+			
+			"awbMode" : "auto",
+			"awbModeProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "auto", "indoor", "outdoor"] },
+			
+			"lowlightMode" : "auto",
+			"lowlightModeProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "close", "only night", "day-night", "auto"] },
+
+			"imageStyle" : 1,
+			"imageStyleProperty" : { "type" : "integer", "mode" : "rw", "min" : 1, "max" : 3, "def" : 1 },
+			
+            		"lghtNhbtdMode" : "auto",
+			"lghtNhbtdModeProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "auto", "on", "off"] },
+            
+            		"BLcompensationMode" : "auto",
+			"BLcompensationModeProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "auto", "on", "off"] },
+			
+			"videoMode" : {
+				"fixMode":"cell",
+				"fixModeProperty": { "type" : "string", "mode" : "rw", "opt" : [ "wall", "cell", "table", "none"] },
+				"wallMode": "180",
+				"wallModeProperty": { "type" : "string", "mode" : "rw", "opt" : ["origin","4R","split","wall_split","180", "kitR", "kitO"]},
+				"cellMode": "360",
+				"cellModeProperty": { "type" : "string", "mode" : "rw", "opt" : ["origin","360","4R","split","wall_split","180","kitR", "kitO"] },
+				"tableMode": "origin",
+				"tableModeProperty": { "type" : "string", "mode" : "rw", "opt" : ["origin","360","4R","split","VR", "kitR", "kitO"] }
+			}
+		}
+}
+
+	

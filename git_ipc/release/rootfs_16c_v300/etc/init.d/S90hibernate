@@ -1,0 +1,19 @@
+#!/bin/sh
+
+echo "/root/pm_callback" > /proc/sys/kernel/pm_notifier
+
+cmdline=`cat /proc/cmdline`
+hbtype=resume
+
+for str in $cmdline
+do
+	case $str in 
+	     hbtype=*)
+	     hbtype=`echo "$str" | awk -F"=" '{print $2}'`
+	esac
+done
+
+if [ "$hbtype"x = "snap"x ]; then
+	echo "hibernate start"
+	echo disk > /sys/power/state
+fi

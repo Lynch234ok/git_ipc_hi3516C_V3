@@ -1,0 +1,103 @@
+
+/**
+ * N1 Version Defination.
+ */
+
+#if !defined(NK_N1_VERSION_H_)
+#define NK_N1_VERSION_H_
+
+/**
+ * Major Version Number.
+ */
+#if !defined(NK_N1_VER_MAJ)
+# define NK_N1_VER_MAJ                ($VER_MAJU)
+#endif
+
+/**
+ * Minor Version Number.
+ */
+#if !defined(NK_N1_VER_MIN)
+# define NK_N1_VER_MIN                ($VER_MINU)
+#endif
+
+/**
+ * Revision Version Number.
+ */
+#if !defined(NK_N1_VER_REV)
+# define NK_N1_VER_REV                ($VER_REVU)
+#endif
+
+/**
+ * Version Number Code.
+ */
+#if !defined(NK_N1_VER_NUM)
+# define NK_N1_VER_NUM                ($VER_NUMU)
+#endif
+
+/**
+ * Version Text
+ */
+#if !defined(NK_N1_VER_STR)
+# define NK_N1_VER_STR()                "$VER_MAJ.$VER_MIN.$VER_REV.$VER_NUM"
+#endif
+
+/**
+ * Version Encode
+ */
+#if !defined(NK_N1_VER_ENC)
+# define NK_N1_VER_ENC(__maj, __min, __rev, __num) \
+	((((__num) + (__rev) * 10000) + (__min) * 1000000) + (__maj) * 100000000)
+#endif
+
+/**
+ * Version Decode
+ */
+#if !defined(NK_N1_VER_DEC)
+# define NK_N1_VER_DEC(__code, __maj, __min, __rev, __num) \
+	do {\
+		__maj = ((__code) / 100000000) % 100;\
+		__min = ((__code) / 1000000) % 100;\
+		__rev = ((__code) / 10000) % 100;\
+		__num = (__code) % 10000;\
+	} while (0)
+#endif
+
+/**
+ * Version Code
+ */
+#if !defined(NK_N1_VER_CODE)
+# define NK_N1_VER_CODE() \
+	NK_N1_VER_ENC(NK_N1_VER_MAJ, NK_N1_VER_MIN, NK_N1_VER_REV, NK_N1_VER_NUM)
+#endif
+
+
+/**
+ * Version Release Year Value.
+ */
+#if !defined(NK_N1_VER_DATE_YEAR)
+# define NK_N1_VER_DATE_YEAR           ($VER_REL_YEARU)
+#endif
+
+/**
+ * Version Release Month Value.
+ */
+#if !defined(NK_N1_VER_DATE_MON)
+# define NK_N1_VER_DATE_MON            ($VER_REL_MONU)
+#endif
+
+/**
+ * Version Release Month Day Value.
+ */
+#if !defined(NK_N1_VER_DATE_MDAY)
+#  define NK_N1_VER_DATE_MDAY           ($VER_REL_MDAYU)
+#endif
+
+/**
+ * Version Release Date Text.
+ */
+#if !defined(NK_N1_VER_DATE_STR)
+#  define NK_N1_VER_DATE_STR()           "$VER_REL_YEAR.$VER_REL_MON.$VER_REL_MDAY"
+#endif
+
+
+#endif /* NK_N1_VERSION_H_ */

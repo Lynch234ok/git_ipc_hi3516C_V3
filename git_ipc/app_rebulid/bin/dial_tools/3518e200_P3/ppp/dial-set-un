@@ -1,0 +1,8 @@
+#!/bin/sh
+
+TEL="*99#"
+APN="3gnet"
+USR=""
+PWD=""
+PIN=""
+export TEL APN USR PWD PIN MODEM

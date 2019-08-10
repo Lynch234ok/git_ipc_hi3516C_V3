@@ -1,0 +1,8 @@
+#!/bin/sh
+
+exec chat -v \
+    ABORT           '\nBUSY\r'                      \
+    ABORT           '\nERROR\r'                     \
+    ABORT           '\nNO DIALTONE\r'               \
+    '' '\K'                                         \
+    '' '+++ATH'

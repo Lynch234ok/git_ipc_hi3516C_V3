@@ -1,0 +1,15 @@
+
+SOURCES = \
+	p2pdevice.c \
+	p2p_json_parse.c \
+	aes.c \
+	_base64.c\
+	urlXxcode.c\
+
+INCLUDES = ./\
+	../../include/ \
+#	../../../include/ 
+
+LIBRARIES = arm/libP2PSDKDevice.a
+LDFLAGS_EXT += "-lP2PSDKDevice"
+

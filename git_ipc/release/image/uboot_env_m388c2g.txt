@@ -1,0 +1,11 @@
+verify=n
+ver=U-Boot 2012.11 (Nov 12 2012)
+bootdelay=3
+baudrate=38400
+ethaddr=02:00:DF:00:11:04
+ipaddr=192.168.11.200
+serverip=192.168.1.11
+netmask=255.255.0.0
+phy_mode=rmii
+bootargs=root=/dev/mtdblock5 mem=64M console=2,${baudrate}
+bootcmd=run setargs;sf read 0xa00000 0xC0000 0x340000;jump 0xa00000

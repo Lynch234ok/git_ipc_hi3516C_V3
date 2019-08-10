@@ -1,0 +1,16 @@
+﻿<html>
+<title>CPU Temperature</title>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+	<script type="text/javascript">	
+	function getTmp() {
+		var path = "/cgi-bin/cpu_temperature.cgi?r=" + Math.random();
+		document.getElementById("svg_img").src = path;
+	}
+	setInterval(function(){getTmp();}, 1000);
+	</script>
+</head>
+<body>
+<img id="svg_img" src=""></img>
+</body>
+</html>

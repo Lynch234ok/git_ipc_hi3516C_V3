@@ -1,0 +1,6 @@
+#!/bin/sh
+
+mkdir -r /usr/local/etc
+echo "nameserver $DNS1" > /usr/local/etc/resolv.conf
+echo "nameserver $DNS2" >> /usr/local/etc/resolv.conf
+

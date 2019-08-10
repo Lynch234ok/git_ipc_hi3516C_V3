@@ -1,0 +1,11 @@
+
+SOURCES = \
+	  sensor.c\
+	  
+	  
+INCLUDES = \
+	../../inlcude\
+
+
+LIBRARIES = \
+

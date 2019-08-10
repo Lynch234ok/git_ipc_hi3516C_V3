@@ -1,0 +1,14 @@
+
+MK_ROM_BIN := "./tools/mk_rom_bin"
+MK_UBOOT_ENV := "./tools/mk_uboot_env"
+
+$(MK_ROM_BIN) :
+	@make -C ../app_rebulid/src/firmware/ PRODUCT_MODEL="$(PRODUCT_MODEL)" SOC_MODEL="$(SOC_MODEL)"
+	@mv ../app_rebulid/src/firmware/$(shell basename $@) $@
+	@strip $@
+
+$(MK_UBOOT_ENV) :
+	@make -C ../app_rebulid/src/firmware/ PRODUCT_MODEL="$(PRODUCT_MODEL)" SOC_MODEL="$(SOC_MODEL)"
+	@mv ../app_rebulid/src/firmware/$(shell basename $@) $@
+	@strip $@
+

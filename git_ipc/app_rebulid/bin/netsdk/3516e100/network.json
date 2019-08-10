@@ -1,0 +1,261 @@
+{
+    "version": "1.1.1",
+    "networkInterface" : {
+        "networkInterfaceList": [
+            {
+                "id": 1,
+                "idProperty": {"type": "integer","mode": "ro"},
+                "interfaceName": "eth0",
+                "interfaceNameProperty": {"type": "string","mode": "ro"},
+                "lan": {
+                    "ipVersion": "v4",
+                    "ipVersionProperty": {"type": "string","mode": "rw","opt": ["v4","v6"]},
+                    "addressingType": "static",
+                    "addressingTypeProperty": {"type": "string","mode": "rw","opt": ["static", "dynamic"]},
+                    "staticIP": "192.168.1.168",
+                    "staticIPProperty": {"type": "string","mode": "rw","max": 32},
+                    "staticNetmask": "255.255.255.0",
+                    "staticNetmaskProperty": {"type": "string","mode": "rw","max": 32},
+                    "staticGateway": "192.168.1.1",
+                    "staticGatewayProperty": {"type": "string","mode": "rw","max": 32},
+                },
+                "upnp": {
+                    "enabled" : true,
+                },
+                "pppoe": {
+                    "enabled": false,
+                    "pppoeUserName": "123456",
+                    "pppoeUserNameProperty": {"type": "string","mode": "rw","max": 64},
+                    "pppoePassword": "123456",
+                    "pppoePasswordProperty": {"type": "string","mode": "rw","max": 64}
+                },
+                "ddns": {
+                    "enabled": false,
+                    "ddnsProvider": "DYNDDNS",
+                    "ddnsProviderProperty": {"type": "string","mode": "rw","opt": ["DYNDDNS","NOIP","3322","CHANGEIP","POPDVR","SKYBEST","DVRTOP"]},
+                    "ddnsUrl": "www.dynddns.org",
+                    "ddnsUrlProperty": {"type": "string","mode": "rw","max": 64},
+                    "ddnsUserName": "123456",
+                    "ddnsUserNameProperty": {"type": "string","mode": "rw","max": 64},
+                    "ddnsPassword": "123456",
+                    "ddnsPasswordProperty": {"type": "string","mode": "rw","max": 64}
+                },
+                
+                "wireless": {
+                    "wirelessMode" : "none",
+                    "wirelessModeProperty": {"type": "string","mode": "rw","opt": ["none","accessPoint","stationMode","repeater"]},
+                }
+            },
+
+            {
+                "id": 2,
+                "idProperty": {"type": "integer","mode": "ro"},
+                "interfaceName": "eth0.1",
+                "interfaceNameProperty": {"type": "string","mode": "ro"},
+                "lan": {
+                    "ipVersion": "v4",
+                    "ipVersionProperty": {"type": "string","mode": "rw","opt": ["v4","v6"]},
+                    "addressingType": "static",
+                    "addressingTypeProperty": {"type": "string","mode": "rw","opt": ["static", "dynamic"]},
+                    "staticIP": "193.169.3.33",
+                    "staticIPProperty": {"type": "string","mode": "rw","max": 32},
+                    "staticNetmask": "255.255.255.0",
+                    "staticNetmaskProperty": {"type": "string","mode": "rw","max": 32},
+                    "staticGateway": "193.169.3.1",
+                    "staticGatewayProperty": {"type": "string","mode": "rw","max": 32},
+                },
+                "upnp": {
+                    "enabled" : false,
+                },
+                "pppoe": {
+                    "enabled": false,
+                },
+                "ddns": {
+                    "enabled": false,
+                },
+            },
+
+            {
+                "id": 3,
+                "idProperty": {"type": "integer","mode": "ro"},
+                "interfaceName": "eth0.2",
+                "interfaceNameProperty": {"type": "string","mode": "ro"},
+                "lan": {
+                    "ipVersion": "v4",
+                    "ipVersionProperty": {"type": "string","mode": "rw","opt": ["v4","v6"]},
+                    "addressingType": "static",
+                    "addressingTypeProperty": {"type": "string","mode": "rw","opt": ["static", "dynamic"]},
+                    "staticIP": "192.168.168.168",
+                    "staticIPProperty": {"type": "string","mode": "rw","max": 32},
+                    "staticNetmask": "255.255.255.0",
+                    "staticNetmaskProperty": {"type": "string","mode": "rw","max": 32},
+                    "staticGateway": "192.168.168.1",
+                    "staticGatewayProperty": {"type": "string","mode": "rw","max": 32},
+                },
+                "upnp": {
+                    "enabled" : false,
+                },
+                "pppoe": {
+                    "enabled": false,
+                },
+                "ddns": {
+                    "enabled": false,
+                },
+            },
+
+            {
+                "id": 4,
+                "idProperty": {"type": "integer","mode": "ro"},
+                "interfaceName": "wlan0",
+                "interfaceNameProperty": {"type": "string","mode": "ro"},
+                "lan": {
+                    "ipVersion": "v4",
+                    "ipVersionProperty": {"type": "string","mode": "rw","opt": ["v4","v6"]},
+                    "addressingType": "dynamic",
+                    "addressingTypeProperty": {"type": "string","mode": "rw","opt": ["static", "dynamic"]},
+                    "staticIP": "172.14.10.1",
+                    "staticIPProperty": {"type": "string","mode": "rw","max": 32},
+                    "staticNetmask": "255.255.255.0",
+                    "staticNetmaskProperty": {"type": "string","mode": "rw","max": 32},
+                    "staticGateway": "172.14.10.1",
+                    "staticGatewayProperty": {"type": "string","mode": "rw","max": 32},
+                },
+                "upnp": {
+                    "enabled" : true,
+                },
+                "pppoe": {
+                    "enabled": false,
+                    "pppoeUserName": "123456",
+                    "pppoeUserNameProperty": {"type": "string","mode": "rw","max": 64},
+                    "pppoePassword": "123456",
+                    "pppoePasswordProperty": {"type": "string","mode": "rw","max": 64}
+                },
+                "ddns": {
+                    "enabled": false,
+                    "ddnsProvider": "DYNDDNS",
+                    "ddnsProviderProperty": {"type": "string","mode": "rw","opt": ["DYNDDNS","NOIP","3322","CHANGEIP","POPDVR","SKYBEST","DVRTOP"]},
+                    "ddnsUrl": "www.dynddns.org",
+                    "ddnsUrlProperty": {"type": "string","mode": "rw","max": 64},
+                    "ddnsUserName": "123456",
+                    "ddnsUserNameProperty": {"type": "string","mode": "rw","max": 64},
+                    "ddnsPassword": "123456",
+                    "ddnsPasswordProperty": {"type": "string","mode": "rw","max": 64}
+                },
+                
+                "wireless": {
+                    "repeaterDevId": "",
+                    "repeaterDevIdProperty": {"type": "string","mode": "rw","max": 64},
+                    "wirelessMode" : "accessPoint",
+                    "wirelessModeProperty": {"type": "string","mode": "rw","opt": ["none","accessPoint","stationMode","repeater"]},
+                    "stationMode" : {
+                        "wirelessStaMode": "802.11bgn mixed",
+                        "wirelessStaModeProperty": {"type": "string","mode": "ro"},
+                        "wirelessApBssId": "123456",
+                        "wirelessApBssIdProperty": {"type": "string","mode": "rw","max": 48},
+                        "wirelessApEssId": "123456",
+                        "wirelessApEssIdProperty": {"type": "string","mode": "rw","max": 32},
+                        "wirelessApPsk": "12345678",
+                        "wirelessApPskProperty": {"type": "string","mode": "rw","min": 8,"max": 63},
+                        "wirelessFixedBpsModeEnabled": true,
+                    },
+                    "stationModeBackup" : {
+                        "wirelessStaMode": "802.11bgn mixed",
+                        "wirelessStaModeProperty": {"type": "string","mode": "ro"},
+                        "wirelessApBssId": "123456",
+                        "wirelessApBssIdProperty": {"type": "string","mode": "rw","max": 48},
+                        "wirelessApEssId": "",
+                        "wirelessApEssIdProperty": {"type": "string","mode": "rw","max": 32},
+                        "wirelessApPsk": "12345678",
+                        "wirelessApPskProperty": {"type": "string","mode": "rw","min": 8,"max": 63},
+                        "wirelessFixedBpsModeEnabled": true,
+                    },
+                    "accessPointMode": {
+                        "wirelessBssId": "123456",
+                        "wirelessBssIdProperty": {"type": "string","mode": "ro","max": 48},
+                        "wirelessEssId": "123456",
+                        "wirelessEssIdProperty": {"type": "string","mode": "rw","max": 32},
+                        "wirelessPsk": "12345678",
+                        "wirelessPskProperty": {"type": "string","mode": "rw","min": 8,"max": 63},
+                        "wirelessApMode": "802.11bgn",
+                        "wirelessApModeProperty": {"type": "string","mode": "rw","opt": ["802.11b","802.11g","802.11n","802.11bg","802.11bgn"]},
+                        "wirelessApMode80211nChannel" : "Auto",
+                   	 	"wirelessApMode80211nChannelProperty": {"type": "string","mode": "rw","opt": ["Auto","1","2","3","4","5","6","7","8","9","10","11","12","13","14"]},
+                        "wirelessEssIdBroadcastingEnabled": true,
+                        "wirelessWpaMode": "WPA2_PSK",
+                        "wireLessWpaModeProperty": {"type": "string","mode": "rw","opt": ["WPA_PSK","WPA2_PSK"]}
+                    },
+                    "dhcpServer": {
+                        "enabled": true,
+                        "dhcpAutoSettingEnabled": false,
+                        "dhcpIpRange": "20",
+                        "dhcpIpRangeProperty": {"type": "string","mode": "rw","max": 64},
+                        "dhcpIpNumber": "172.14.10.10",
+                        "dhcpIpNumberProperty": {"type": "string","mode": "rw","max": 32},
+                        "dhcpIpDns": "8.8.8.8",
+                        "dhcpIpDnsProperty": {"type": "string","mode": "rw","max": 32},
+                        "dhcpIpGateway": "172.14.10.1",
+                        "dhcpIpGatewayProperty": {"type": "string","mode": "rw","max": 32}
+                    },
+                    "repeater" : {
+                        "wiredBandWidth": "100M",
+                        "wiredBandWidthProperty":{"type":"string","mode":"rw","opt":["auto","10M","100M","1000M"]},
+                        "wiredMaxConn": 0,
+                        "wiredMaxConnProperty" : { "type" : "integer", "mode" : "rw", "min" : 0, "max" : 4, "def" : 0 },
+                        "wirelessMaxConn": 4,
+                        "wirelessMaxConnProperty" : { "type" : "integer", "mode" : "rw", "min" : 0, "max" : 4, "def" : 4 },
+                        "repeaterMode": "auto",
+                        "repeaterModeProperty":{"type":"string","mode":"rw","opt":["auto","wired","wireless"]},
+                        "repeaterWorkMode": "bridge",
+                        "repeaterWorkModeProperty":{"type":"string","mode":"rw","opt":["auto","bridge","bond"]}
+                    }
+                }
+            },
+        ]
+    },
+
+    "networkPort" : {
+        "networkPortList" : [
+            {
+                "id": 1,
+                "idProperty": {"type": "integer","mode": "ro"},
+                "portName": "universal",
+                "portNameProperty": {"type": "string","mode": "ro"},
+                "value": 80,
+                "valueProperty" : { "type" : "integer", "mode" : "rw", "min" : 80, "max" : 60000, "def" : 80 }
+            },
+            {
+                "id": 2,
+                "idProperty": {"type": "integer","mode": "ro"},
+                "portName": "ants port",
+                "portNameProperty": {"type": "string","mode": "ro"},
+                "value": 5050,
+                "valueProperty" : { "type" : "integer", "mode" : "rw", "min" : 80, "max" : 60000, "def" : 5050 }
+            },
+            {
+                "id": 3,
+                "idProperty": {"type": "integer","mode": "ro"},
+                "portName": "reverse port1",
+                "portNameProperty": {"type": "string","mode": "ro"},
+                "value": 8080,
+                "valueProperty" : { "type" : "integer", "mode" : "rw", "min" : 80, "max" : 60000, "def" : 8080 }
+            },
+            {
+                "id": 4,
+                "idProperty": {"type": "integer","mode": "ro"},
+                "portName": "HICONN PORT",
+                "portNameProperty": {"type": "string","mode": "ro"},
+                "value": 8000,
+                "valueProperty" : { "type" : "integer", "mode" : "rw", "min" : 80, "max" : 60000, "def" : 8000 }
+            }
+        ],
+    },
+
+    "networkDNS" : {
+        "preferredDns": "8.8.8.8",
+        "staticAlternateDns": "8.8.4.4",
+    },
+
+    "esee": {
+        "enabled": false
+    },
+}

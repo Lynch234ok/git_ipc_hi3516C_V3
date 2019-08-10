@@ -1,0 +1,48 @@
+#! /bin/sh
+
+/bin/mount -a
+
+# mount point "/usr/local"
+/bin/mkdir -p /usr/local/bin
+/bin/mkdir -p /usr/local/etc
+/bin/mkdir -p /usr/local/sbin
+
+
+echo "
+            _ _ _ _ _ _ _ _ _ _ _ _
+            \  _  _   _  _ _ ___
+            / /__/ \ |_/
+           / __   /  -  _ ___
+          / /  / /  / /
+  _ _ _ _/ /  /  \_/  \_ ______
+___________\___\__________________
+"
+for initscript in /etc/init.d/S[0-9][0-9]*
+do
+	if [ -x $initscript ] ;
+	then
+		echo "[RCS]: $initscript"
+		$initscript
+	fi
+done
+
+CUSTOMDIR="/media/custom"
+IPCAMDIR="/media/custom/ipcam"
+mkdir "$CUSTOMDIR"
+mount -t cramfs /dev/mtdblock6 /media/custom
+
+cd "$IPCAMDIR"/mpp
+./load3518 -i imx290
+cd ~
+
+/bin/upgrade &
+
+PATH=$PATH":/media/custom/bin"
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH":/media/custom/lib"
+export PATH
+export LD_LIBRARY_PATH
+
+"$IPCAMDIR"/shell/startup.sh &
+
+/bin/login
+

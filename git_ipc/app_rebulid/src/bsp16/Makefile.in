@@ -1,0 +1,18 @@
+
+SOURCES = \
+	  i2cm_18a.c \
+	  wdt.c \
+	  rtc_18a.c  \
+	  ../bsp/keytime.c \
+	  ../bsp/commom/bsp_commom.c \
+	  ../bsp/jagpio/bsp_jagpio.c \
+	  ../bsp/higpio/higpio.c \
+	  ../bsp/16d/hi3516d_contrl.c \
+
+
+INCLUDES = \
+	   ../../include 
+
+
+LIBRARIES = \
+

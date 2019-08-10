@@ -1,0 +1,49 @@
+{
+	"Version" : "1.0.0",
+	"FixMode": "none",
+	"FixModeProperty": { "type" : "string", "mode" : "rw", "opt" : [ "wall", "cell", "table", "none"] },
+	"ModelName" : "IPCAM",
+	"ModelNameProperty"  : { "type" : "string", "mode" : "ro"},
+	"SN" :{
+		"ChipModel" : "3516D100",
+		"ChipModelProperty"  : { "type" : "string", "mode" : "ro"},
+		"ProductModel" : "00000300",
+		"ProductModelProperty"  : { "type" : "string", "mode" : "ro"}
+	},
+	"Audio" :{
+		"AudioInputVolume" : 50,
+		"AudioInputVolumeProperty"  : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 100, "def" : 50},
+		"AudioOutputVolume" : 50,
+		"AudioOutputVolumeProperty"  : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 100, "def" : 50}
+	},
+	"Video" :{
+		"videoChannel" : [
+			{
+				"id":1,
+				"idProperty"  : { "type" : "int", "mode" : "ro"},
+				"bitRateControlType" : "VBR",
+				"bitRateControlTypeProperty" : { "type" : "string", "mode" : "rw", "opt" : ["CBR", "VBR"] },
+				"Bps" : 4096,
+				"BpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 32, "max" : 5000 },	
+				"Fps" : 25,
+				"FpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 5, "max" : 30 },		
+				"Resolution" : "2048x1520",
+				"ResolutionProperty" : { "type" : "string", "mode" : "rw", "opt" : ["720x576", "960x576", "1280x720", "1280x960","1920x1080","2048x1520"]}
+			},
+			{
+				"id":2,
+				"idProperty"  : { "type" : "int", "mode" : "ro"},
+				"bitRateControlType" : "VBR",
+				"bitRateControlTypeProperty" : { "type" : "string", "mode" : "rw", "opt" : ["CBR", "VBR"] },
+				"Bps" : 768,
+				"BpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 32, "max" : 5000 },	
+				"Fps" : 25,
+				"FpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 5, "max" : 30 },		
+				"Resolution" : "720x576",
+				"ResolutionProperty" : { "type" : "string", "mode" : "rw", "opt" : ["352x288","640x360","720x576"] }
+			}
+		]
+	}
+}
+
+	

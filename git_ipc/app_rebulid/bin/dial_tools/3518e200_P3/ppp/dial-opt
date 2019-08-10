@@ -1,0 +1,21 @@
+debug
+logfile /tmp/pppd.log
+nodetach
+idle 0
+lock
+115200
+asyncmap 0
+lcp-echo-failure 4
+lcp-echo-interval 30
+crtscts
+show-password
+noauth
+novj
+novjccomp
+noccp
+noipdefault
+defaultroute
+usepeerdns
+ipcp-accept-local
+ipcp-accept-remote
+connect 'chat -s -v -f /tmp/dial-cmd'

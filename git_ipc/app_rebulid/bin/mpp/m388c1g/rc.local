@@ -1,0 +1,45 @@
+#!/bin/sh
+
+#echo "/mnt/flash/etc/rc.local"
+
+#ETHADDR=`/usr/bin/fw_printenv -n ethaddr`
+#/sbin/ifconfig eth0 hw ether $ETHADDR
+#IPADDR=`/usr/bin/fw_printenv -n ipaddr`
+#/sbin/ifconfig eth0 $IPADDR
+#/sbin/ifconfig lo 127.0.0.1
+#/sbin/route add default gw 172.17.0.1
+#/usr/sbin/inetd /etc/inetd.conf
+#syslogd
+
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/share/ipcam/mpp/i2c_tool/lib
+export PATH=$PATH:/usr/share/ipcam/mpp/i2c_tool/bin
+
+# Install drivers
+echo "install drivers"
+cd /usr/share/ipcam/mpp/driver
+sh driver.sh
+sleep 1
+
+#Set gpio for ircut 
+echo 2 > /sys/devices/platform/vpl_gpadc/adc
+echo 0 > /sys/class/gpio/export
+echo 3 > /sys/class/gpio/export
+
+# Create directory
+mkdir -p /tmp/venc/c0
+
+#cd /mnt/flash/web
+#sh start.sh
+#sleep 1
+
+
+#start mstream venc
+echo "start mstream venc"
+cd /usr/share/ipcam/mpp/
+sh start_ipc_m.sh
+
+#for test
+#sleep 1
+#sh videomode.sh &
+
+

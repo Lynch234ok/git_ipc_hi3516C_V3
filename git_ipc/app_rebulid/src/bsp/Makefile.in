@@ -1,0 +1,151 @@
+#最后一个else为默认的型号，这些默认的型号如下：
+#model_18/HI3516C_MODEL/HI3518E_WIFI_SECURITY_CONSUME/HI3518A_MODEL
+#HI3518A_PTZ/HI3518A_OLD_MODEL/HI3518A_WIFI_SECURITY_CONSUME/HI3518C_MODEL
+#HI3518C_WIFI_SECURITY_MODEL/HI3518E_MODEL/HI3518E_WIFI_MODEL/HI3518E_WIFI_SECURITY_MODEL
+
+FLAG16A := HI3516A_MODEL 
+FLAG16D := HI3516D_MODEL
+FLAGP6 := P6
+FLAGP4_720 := P4_720
+
+FLAG16CV2 := HI3516CV2_MODEL
+FLAG18EV2 := HI3518EV2_MODEL
+FLAGP3 := P3
+FLAGP2_720 := P2_720
+FLAGP3_COMMON := P3_COMMON
+FLAGP4 := P4
+FLAGF5 := F5
+FLAG16CV3 := HI3516CV3_MODEL
+FLAG16EV1 := HI3516EV1_MODEL
+FLAGP3_16EV1 := C3-S-NE
+
+
+ifeq ($(PRODUCT_NAME), P1)
+SOURCES = \
+	  i2cm_18a.c \
+	  watchdog.c \
+	  rtc_18a.c  \
+	  keytime.c \
+	  commom/bsp_commom.c \
+	  jagpio/bsp_jagpio.c \
+	  higpio/higpio.c \
+	  P1/p1_contrl.c \
+
+else ifeq ($(PRODUCT_NAME), P1_COMMON)
+SOURCES = \
+	  i2cm_18a.c \
+	  watchdog.c \
+	  rtc_18a.c  \
+	  keytime.c \
+	  commom/bsp_commom.c \
+	  jagpio/bsp_jagpio.c \
+	  higpio/higpio.c \
+	  P1_commom/p1_commom_contrl.c \
+
+else ifeq ($(PRODUCT_NAME), P2_COMMON)
+SOURCES = \
+	  i2cm_18a.c \
+	  watchdog.c \
+	  rtc_18a.c  \
+	  keytime.c \
+	  commom/bsp_commom.c \
+	  jagpio/bsp_jagpio.c \
+	  higpio/higpio.c \
+	  P1_commom/p1_commom_contrl.c \
+
+else ifeq ($(PRODUCT_NAME), P2)
+SOURCES = \
+	  i2cm_18a.c \
+	  watchdog.c \
+	  rtc_18a.c  \
+	  keytime.c \
+	  commom/bsp_commom.c \
+	  jagpio/bsp_jagpio.c \
+	  higpio/higpio.c \
+	  P2/p2_contrl.c \
+
+else ifeq ($(strip $(PRODUCT_NAME)), $(filter $(PRODUCT_NAME), $(FLAG16A) $(FLAG16D) $(FLAGP6) $(FLAGP4_720) ))
+SOURCES = \
+	  i2cm_18a.c \
+	  watchdog.c \
+	  rtc_18a.c  \
+	  keytime.c \
+	  commom/bsp_commom.c \
+	  jagpio/bsp_jagpio.c \
+	  higpio/higpio.c \
+	  16d/hi3516d_contrl.c \
+
+else ifeq ($(strip $(PRODUCT_NAME)), $(filter $(PRODUCT_NAME), $(FLAG16CV2) $(FLAG18EV2) $(FLAGP3) $(FLAGP4) $(FLAGP2_720) $(FLAGF5)))
+SOURCES = \
+	  i2cm_18a.c \
+	  watchdog.c \
+	  rtc_18a.c  \
+	  keytime.c \
+	  commom/bsp_commom.c \
+	  jagpio/bsp_jagpio.c \
+	  higpio/higpio.c \
+	  18ev2/18ev2_contrl.c \
+
+else ifeq ($(strip $(PRODUCT_NAME)), $(filter $(PRODUCT_NAME), $(FLAGP3_COMMON) ))
+SOURCES = \
+	  i2cm_18a.c \
+	  watchdog.c \
+	  rtc_18a.c  \
+	  keytime.c \
+	  commom/bsp_commom.c \
+	  jagpio/bsp_jagpio.c \
+	  higpio/higpio.c \
+	  P3_common/p3_common_contrl.c \
+
+else ifeq ($(PRODUCT_NAME), M388C1G)
+SOURCES = \
+	  i2cm_18a.c \
+	  watchdog.c \
+	  rtc_18a.c  \
+	  keytime.c \
+	  commom/bsp_commom.c \
+	  jagpio/bsp_jagpio.c \
+	  m388c1g/m388c1g_contrl.c \
+
+else ifeq ($(PRODUCT_NAME), M388C2G)
+SOURCES = \
+	  i2cm_18a.c \
+	  watchdog.c \
+	  rtc_18a.c  \
+	  keytime.c \
+	  commom/bsp_commom.c \
+	  jagpio/bsp_jagpio.c \
+	  m388c2g/m388c2g_contrl.c \
+
+else ifeq ($(strip $(PRODUCT_NAME)), $(filter $(PRODUCT_NAME), $(FLAG16CV3) $(FLAG16EV1) $(FLAGP3_16EV1)))
+SOURCES = \
+          i2cm_18a.c \
+          watchdog.c \
+          rtc_18a.c  \
+          keytime.c \
+          commom/bsp_commom.c \
+          jagpio/bsp_jagpio.c \
+          higpio/higpio.c \
+          16cv3/16cv3_contrl.c \
+	  
+
+  
+else
+SOURCES = \
+	  i2cm_18a.c \
+	  watchdog.c \
+	  rtc_18a.c  \
+	  keytime.c \
+	  commom/bsp_commom.c \
+	  jagpio/bsp_jagpio.c \
+	  higpio/higpio.c \
+	  model_18/model_18_contrl.c \
+
+endif
+
+INCLUDES = \
+	   ../../include 
+
+
+LIBRARIES = \
+

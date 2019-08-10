@@ -1,0 +1,34 @@
+#! /bin/sh
+
+/bin/mount -a
+
+# mount point "/usr/local"
+/bin/mkdir -p /usr/local/bin
+/bin/mkdir -p /usr/local/etc
+/bin/mkdir -p /usr/local/sbin
+
+echo "
+            _ _ _ _ _ _ _ _ _ _ _ _
+            \  _  _   _  _ _ ___
+            / /__/ \ |_/
+           / __   /  -  _ ___
+          / /  / /  / /
+  _ _ _ _/ /  /  \_/  \_ ______
+___________\___\__________________
+"
+for initscript in /etc/init.d/S[0-9][0-9]*
+do
+	if [ -x $initscript ] ;
+	then
+		echo "[RCS]: $initscript"
+		$initscript
+	fi
+done
+
+cd /usr/share/ipcam/mpp
+./load3518 -i ar0130
+cd ~
+
+#./trigger.sh
+/usr/share/ipcam/shell/startup.sh &
+

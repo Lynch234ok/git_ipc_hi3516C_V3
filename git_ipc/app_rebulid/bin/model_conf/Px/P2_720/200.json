@@ -1,0 +1,50 @@
+{
+	"Version" : "1.0.1",
+	"FixMode": "table",
+	"FixModeProperty": { "type" : "string", "mode" : "rw", "opt" : [ "wall", "cell", "table", "none"] },
+	"ModelName" : "P2_720",
+	"ModelNameProperty"  : { "type" : "string", "mode" : "ro"},
+	"SN" :{
+		"ChipModel" : "3518E200",
+		"ChipModelProperty"  : { "type" : "string", "mode" : "ro"},
+		"ProductModel" : "20000200",
+		"ProductModelProperty"  : { "type" : "string", "mode" : "ro"}
+	},
+	"Audio" :{
+		"AudioInputVolume" : 50,
+		"AudioInputVolumeProperty"  : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 100, "def" : 50},
+		"AudioOutputVolume" : 50,
+		"AudioOutputVolumeProperty"  : { "type" : "int", "mode" : "rw", "min" : 0, "max" : 100, "def" : 50}
+	},
+	"Video" :{
+		"videoChannel" : [
+			{
+				"id":1,
+				"idProperty"  : { "type" : "int", "mode" : "ro"},
+				"bitRateControlType" : "VBR",
+				"bitRateControlTypeProperty" : { "type" : "string", "mode" : "rw", "opt" : ["CBR", "VBR"] },
+				"Bps" : 1024,
+				"BpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 32, "max" : 5000 },	
+				"Fps" : 15,
+				"FpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 5, "max" : 30 },		
+				"Resolution" : "1920x1080",
+				"ResolutionProperty" : { "type" : "string", "mode" : "rw", "opt" : ["1920x1080"]}
+			},
+			{
+				"id":2,
+				"idProperty"  : { "type" : "int", "mode" : "ro"},
+				"bitRateControlType" : "VBR",
+				"bitRateControlTypeProperty" : { "type" : "string", "mode" : "rw", "opt" : ["CBR", "VBR"] },
+				"Bps" : 256,
+				"BpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 32, "max" : 5000 },	
+				"Fps" : 15,
+				"FpsProperty" : { "type" : "integer", "mode" : "rw", "min" : 5, "max" : 30 },		
+				"Resolution" : "640x360",
+				"ResolutionProperty" : { "type" : "string", "mode" : "rw", "opt" : ["640x360"] }
+			}
+		]
+	},
+	"irCutControlMode": "software",
+	"irCutControlModeProperty" : { "type" : "string", "mode" : "rw", "opt" : [ "hardware", "software"] }	
+}
+

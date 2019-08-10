@@ -1,0 +1,36 @@
+
+
+L_SRC_LIB := -L$(LIB_PATH)/../lib $(patsubst %,-l%,$(SRC_LIB))
+
+SRC := direct_io.c dio_main.c
+OBJ := $(patsubst %.c, %.o, $(SRC))
+DEP := $(patsubst %.c, %.d, $(SRC))
+INC := -I../include
+
+CROSS ?= arm-hisiv100nptl-linux-
+CC := $(CROSS)gcc
+CXX := $(CROSS)g++
+AR := $(CROSS)ar
+STRIP := $(CROSS)strip
+CFLAGS := -Wl,--gc-sections --function-sections $(SRC_CFLAGS) -D_DIRECTIO_MAIN $(INC)
+
+	
+###########################################################
+###########################################################
+
+TARGET := directIO
+
+.PHONY : clean distclean
+
+$(TARGET): $(OBJ)
+	$(CC) $^ -o $@ $(LDFLAGS) -Wl,--gc-sections --function-sections
+	$(CC) $^ -o $@_rel $(LDFLAGS) -Wl,--gc-sections --function-sections
+
+%.o : %.c
+	@mkdir -p $(shell dirname $@)
+	@echo -e "\033[33mmaking $<...\033[0m"
+	$(CC) $(CFLAGS) -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o $@ -c $<
+
+
+clean:
+
